@@ -444,6 +444,8 @@ Now that we have explained the three supervised methods (The supervised network 
     \item Uncertainty on the accuracy is worse for all rows, as the algorithm adds another layer of random deviations to the network.
 \end{itemize}
 
+The literature standards for the accuracy reported in classifying the MNIST database digits are typically higher, around 95\%. It is to be noted, however, that while the original paper by Hopfield and Krotov reaches a comparable accuracy, it does so with a number of second-layer neurons and epochs processed one order of magnitude higher than the algorithm discussed in this paper (2.000 neurons vs 100 and 1.000 epochs vs 100). A point of strength of this model is the interpretability of the synapses: we know that out of the one hundred neurons most of them resemble the prototype of a digit (see next section) and can thus act as a binary switch that confirms to the supervised part of the algorithm if the given input does or does not belong to a certain class. This would seem to work best when working in conjunction with a random forest since it also works with a system of binary classification. On practice however, we observe a drop in accuracy when using the method in conjunction with the random forest.
+
 \section{Visual characterization of patterns}
 
 \begin{figure} [H]
