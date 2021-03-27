@@ -18,10 +18,9 @@
 \textwidth=450pt\oddsidemargin=0pt
 \graphicspath{{img/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png, .gif}
-\title{Impact of inter-synaptic competition on the learning dynamics of a
-biologically-inspired neural network}
+\title{Impact of inter-synaptic competition on the learning dynamics of a biologically-inspired neural network}
 \author{Alessandro Dal Maso}
-\date{March 1 2021}
+\date{May 10 2021}
 \begin{document}
 \begin{titlepage}
 \begin{center}
@@ -30,7 +29,7 @@ biologically-inspired neural network}
 \rule[0.5cm]{15.8cm}{0.6mm}
 \\\vspace{3mm}
 {\small{\bf School of science \\
-Departement of Physics and Astronomy\\
+Department of Physics and Astronomy\\
 Master Degree in Physics}}
 \end{center}
 \vspace{23mm}
@@ -52,11 +51,23 @@ Alessandro Dal Maso}}}
 \end{minipage}
 \vspace{40mm}
 \begin{center}
-Academic year{ 2019/2020}
+Academic year{2019/2020}
 \end{center}
 \end{titlepage}
 \begin{abstract}
-In 2019, a paper by Dimitry Krotov and John J. Hopfield evidences a new model of neural network based on unsupervised learning trough competing hidden units. The main characteristics I reproduced the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes: a random forest, a supervised neural network and a support vector machine. The task on which the neural network was used is the classification of digits of the MNIST database. An accuracy of about 92\% correct guesses on a test data set was achieved by the network.
+In 2019, a paper by Dimitry Krotov and John J. Hopfield evidences a new model of neural network based on unsupervised learning trough competing hidden units. The main idea is that a network composed of only one input layer and one output layer is trained using this method; The resulting weight matrix is then used as a transformation matrix on the data, highlighting useful features. The transformed data is meant to be classified with a supervised method.
+
+The unsupervised training phase utilizes competition between neurons by ranking the response to the given input, strengthening the synapses of the one neuron which responded best to the input through hebbian learning and weakening the synapses of the ones that gave a weak response through anti-hebbian learning, thus "pushing them away" from the input pattern. As a result, it is possible to recognize patterns among the synapses of each neuron that resemble the original input.
+
+I reproduce the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes: a random forest, a supervised neural network and a support vector machine. The task on which the neural network was used is the classification of digits of the MNIST database. An accuracy of about 92\% correct guesses on a test data set was achieved by the network. The variants of the algorithm studied include:
+\begin{itemize}
+\item Switching off explicit anti-hebbian learning;
+\item Changing the composition of batches of data;
+\item Inserting an over time exponential decay (this modification was inspired by the BCM theory of the visual cortex);
+\item Strengthening and weakening the synapses of multiple neurons per input.
+
+\end{itemize}
+I also observe and classify the emerging patterns among the synapses, analysing them through agglomerative hierarchical clustering with multiple definition of distances, of which the Hausdorff inspired one seems to give the best results.
 \todo[inline]{estendere}
 
 \end{abstract}
