@@ -517,6 +517,8 @@ The literature standards for the accuracy reported in classifying the MNIST data
     \item All weights are positive, as expected since values can only go up during learning.
 \end{itemize}
 
+In the original paper by Hopfield and Krotov this modification is tested, giving slight worse prediction results. While the prediction results were only minimally changed in our implementation of the algorithm, it is interesting that the digits are now prototypes of digits with all digits represented (see figure \ref{cerchio2}). These figures appear to be consistent, reappearing unchanged at modifications of various parameters of the algorithm, and are also very similar to the ones appearing in the "Exponential decay over time modification" and "Multiple neurons reinforced" modification (see sections with the same names in the chapter "Behaviour of variants", and in particular figures \ref{decay} and \ref{multiple}).
+
 \begin{figure} [H]
     \centering
     \includegraphics [width=12cm ] {o/bar1.png}
@@ -591,15 +593,16 @@ The value used for $\epsilon$ was 0.05.
 
 The algorithm performed worse with this modification, as we can see in table \ref{decayT}.
 
+This modification follows BCM, the visual cortex theory developed in 1981. It seems that in this case the decay brings down most synapses so that they are relatively small compared to the ones that are still visible in the visual representation. It is interesting that in this group all digits are represented. Furthermore, the synapses are now more similar to prototypes of digits that are surrounded by small, negative synapses values. Examining the seemingly blank sets of synapses we can see (figure \ref{nearzero}) that the pattern that characterize our model are still there, albeit of some orders of magnitude smaller, and in some cases no convergence at all is reached.
+
 \subsection{Visual characterization}
 
 \begin{figure} [H]
 \centering
 \includegraphics [width=12cm ] {h/cento.png}
+\label{decay}
 \caption{Visual representation of the learned weights, with exponential decay over time.}
 \end{figure}
-
-This modification follows BCM, the visual cortex theory developed in 1981.
 
 \subsection{Exponential decay over time: visual observations}
 
@@ -645,7 +648,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 \centering
 \includegraphics [width=12cm ] {h/quattrocinque.png}
 \caption{Visual representation of the learned weights, with four neurons reinforced for each pattern.}
-\label{45}
+\label{multiple}
 \end{figure}
 
 \subsection{Multiple neurons reinforced: visual observations}
