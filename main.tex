@@ -534,7 +534,7 @@ The literature standards for the accuracy reported in classifying the MNIST data
 
 \section{Different batch compositions}
 
-Another point of interest in the study of the model proposed was modifying the subdivision in batches of the database. Two variations were used: one in wich the single batches were formed of only one digit, (figure \ref{monotype}) and one in wich the batches were formed of two types of digits only (figure \ref{1v1}).
+Another point of interest in the study of the model proposed was modifying the subdivision in batches of the database. Two variations were used: one in which the single batches were formed of only one digit, (figure \ref{monotype}) and one in which the batches were formed of two types of digits only (figure \ref{1v1}).
 
 While this was expected to produce different patterns in synapses, both the patterns and the prediction accuracy did not change significantly.
 
@@ -551,6 +551,9 @@ While this was expected to produce different patterns in synapses, both the patt
     \caption{"One-vs-one" batch example.}
     \label{1v1}
 \end{figure}
+
+The reason we were interested in these two modifications is that the model learns to distinguish patterns by ranking the response to those patterns among neurons, and then reinforcing the synapses of the one that responded the most. So, in the case of "monotype" batches (figure \ref{monotype}), this could mean an increased sensibility to differences among different writings of the same digits; for example the number 4 is handwritten either with a closed loop, as seen in the font of this document, of without the upper closed loop. Such differences, and more subtle ones could be picked up by such a modification. The other modification, making use of "one-vs-one" batches (figure \ref{1v1}), is interesting for a different reason: It could lead to a better differentiation between each two digits, by confronting them through a single batch.
+\todo{meno avrebbe potuto questo e quello?}
 
 \section{Exponential decay over time}
 
