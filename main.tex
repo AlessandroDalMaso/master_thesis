@@ -517,7 +517,7 @@ The literature standards for the accuracy reported in classifying the MNIST data
     \item All weights are positive, as expected since values can only go up during learning.
 \end{itemize}
 
-In the original paper by Hopfield and Krotov this modification is tested, giving slight worse prediction results. While the prediction results were only minimally changed in our implementation of the algorithm, it is interesting that the digits are now prototypes of digits with all digits represented (see figure \ref{cerchio2}). These figures appear to be consistent, reappearing unchanged at modifications of various parameters of the algorithm, and are also very similar to the ones appearing in the "Exponential decay over time modification" and "Multiple neurons reinforced" modification (see sections with the same names in the chapter "Behaviour of variants", and in particular figures \ref{decay} and \ref{multiple}).
+In the original paper by Hopfield and Krotov this modification is tested, giving slight worse prediction results. While the prediction results were only minimally changed in our implementation of the algorithm, it is interesting that the digits are now prototypes of digits with all digits represented (see figure \ref{o/cerchio2}). These figures appear to be consistent, reappearing unchanged at modifications of various parameters of the algorithm, and are also very similar to the ones appearing in the "Exponential decay over time modification" and "Multiple neurons reinforced" modification (see sections with the same names in the chapter "Behaviour of variants", and in particular figures \ref{decay} and \ref{multiple}).
 
 \begin{figure} [H]
     \centering
@@ -656,7 +656,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 \begin{itemize}
     \item In this case, the hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-hebbian learning. 
     \item Confronting this with the convergence pattern of the original algorithm, but with anti-hebbian learning switched off  (see figure \ref{nodelta}) We observe a close similarity, except for five patterns that did not fully converged to a prototype of a digit.
-    \item However, some digits seem less precise, for example in figure \ref{45} first row seventh column.
+    \item However, some digits seem less precise, for example in figure \ref{multiple} first row seventh column.
 \end{itemize}
 
 \chapter{Cluster analysis}
