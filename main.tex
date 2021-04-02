@@ -59,7 +59,7 @@ Academic year{ 2019/2020}
 \newenvironment{dedication}
   {\clearpage           % we want a new page
    \thispagestyle{empty}% no header and footer
-   \vspace*{\stretch{1}}% some space at the top 
+   \vspace*{\stretch{1}}% some space at the top
    \itshape             % the text is in italics
    \raggedleft          % flush to the right margin
   }
@@ -67,13 +67,16 @@ Academic year{ 2019/2020}
    \vspace{\stretch{3}} % space at bottom is three times that at the top
    \clearpage           % finish off the page
   }
-  
+
 \begin{dedication}
 To my family
 \end{dedication}
 
 \begin{abstract}
-In 2019, a paper by Dimitry Krotov and John J. Hopfield evidences a new model of neural network based on unsupervised learning trough competing hidden units. The main idea is that a network composed of only one input layer and one output layer is trained using this method; The resulting weight matrix is then used as a transformation matrix on the data, highlighting useful features. The transformed data is meant to be classified with a supervised method.
+In 2019, a paper by Dimitry Krotov and John J.  Hopfield evidences a new model of neural network based on unsupervised learning trough competing hidden units.
+The main idea is that a network composed of only one input layer and one output layer is trained using this method;
+The resulting weight matrix is then used as a transformation matrix on the data, highlighting useful features.
+The transformed data is meant to be classified with a supervised method.
 
 The unsupervised training phase utilizes competition between neurons by ranking the response to the given input, strengthening the synapses of the one neuron which responded best to the input through hebbian learning and weakening the synapses of the ones that gave a weak response through anti-hebbian learning, thus "pushing them away" from the input pattern. As a result, it is possible to recognize patterns among the synapses of each neuron that resemble the original input.
 
@@ -137,7 +140,7 @@ Then, in the successive layer, we want neurons to activate when a certain combin
 \includegraphics [width=\textwidth] {o/features.png}
 \caption{In the image of a nine, both features are present.}
 \end{figure}
-As for the activation functions, one common example is the sigmoid, winch maps the real number range in the $[0,1]$ range. The final output layer would be composed of ten neurons, of winch only one would activate for each digit. For example, we would like the final output value to be one for the correct digit, and zero for all the others. Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is. Typically, a case-by-case judgement must be made, depending on the task we need to solve; there is no global rule to define the number of neurons and layers. 
+As for the activation functions, one common example is the sigmoid, winch maps the real number range in the $[0,1]$ range. The final output layer would be composed of ten neurons, of winch only one would activate for each digit. For example, we would like the final output value to be one for the correct digit, and zero for all the others. Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is. Typically, a case-by-case judgement must be made, depending on the task we need to solve; there is no global rule to define the number of neurons and layers.
 
 Now let's discuss the problem of how effectively train the network so that its parameters have appropriate values.
 \subsection{Network training}
@@ -191,7 +194,7 @@ We are almost done: we just need to find a way to calculate the $\delta$ for eac
 
 For the output layer units, this task is trivial. For example, if the error function is defined as in \ref{true},
 \begin{equation}
-\delta_j = m_j - t_j 
+\delta_j = m_j - t_j
 \end{equation}
 Where $t_j$ is the expected output.
 
@@ -248,7 +251,7 @@ The authors also sum up the characteristics of the algorithm  in four points:
 \includegraphics [height=7cm ,width=12cm ] {o/2parti2.png}
 \caption{The structure of the model.}
 \end{figure}
- 
+
 The main equation of the algorithm is
 
 \begin{equation}
@@ -299,7 +302,7 @@ The random forest is a supervised machine learning method that is based on a set
 
 \subsubsection{Decision trees}
  At its core, a decision tree is nothing more ta set of binary decisions based on data associated with the samples. The data can be both categorical (i.e. it is a true of false affirmation) or numerical (i.e. it has a value associated to it), in wich case we make use of thresholds to turn use it as if it was categorical. (see figure \ref{chestt})
- 
+
 \begin{figure} [H]
     \centering
     \includegraphics [width=12cm] {o/chestt.png}
@@ -674,7 +677,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 \subsection{Multiple neurons reinforced: visual observations}
 
 \begin{itemize}
-    \item In this case, the hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-hebbian learning. 
+    \item In this case, the hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-hebbian learning.
     \item Confronting this with the convergence pattern of the original algorithm, but with anti-hebbian learning switched off  (see figure \ref{nodelta}) We observe a close similarity, except for five patterns that did not fully converged to a prototype of a digit.
     \item However, some digits seem less precise, for example in figure \ref{multiple} first row seventh column.
 \end{itemize}
@@ -715,7 +718,7 @@ In order to perform cluster analysis, a definition of distance between two set o
 Where $a_i, b_i$ are the single synapses strenght of sets A and B. The resulting clusters (for an empirically determined distance threshold) can be seen in appendix B.
 The second definition tried was cosine distance, i.e.
 \begin{equation}
-    cosine(A,B) = 1 - \frac{A \cdot B}{|A||B|} 
+    cosine(A,B) = 1 - \frac{A \cdot B}{|A||B|}
 \end{equation}
 
 Where $|X|$ is the euclidean norm of $X$.
@@ -765,7 +768,7 @@ With this definition, out of 18 clusters, 15 were formed by only one digit, 2 we
 
 \begin{itemize}
     \item The only triple digit cluster (figure \ref{910}, on the left) is composed of eights, arguably the most complicated shape and thus the least separable from the others, fives and threes that share each part of the shape with eight, especially looking at the definition of distance we gave to the algorithm.
-    
+
 \begin{figure} [H]
     \centering
     \includegraphics [width=\textwidth ] {c/h/9.png}
@@ -781,19 +784,19 @@ With this definition, out of 18 clusters, 15 were formed by only one digit, 2 we
     \caption{}
     \label{12}
 \end{figure}
-    
+
     \item The two double digit clusters (figure \ref{12}) are composed of nines and fours. In cluster 2, all digits are nine but a four, wich is very different from all other fours, wich explains the "wrong" classification.
     \item Zeros cluster by themselves well even cutting the dendrogram higher.
-    
+
     \item Clusters 11 and 12 (figure \ref{1112}) make evident the difference between the two types of two prototypes: with and without loop.
-    
+
 \begin{figure} [H]
     \centering
     \includegraphics [width=\textwidth ] {c/h/11.png}
     \caption{}
     \label{1112}
 \end{figure}
-    
+
     \item Clusters 17 and 18 joined late and their resulting cluster (we can see that one groups ones wich are tilted, the other ones that are not) was the last joining all other digits. (see figure \ref{final})
 \end{itemize}
 
