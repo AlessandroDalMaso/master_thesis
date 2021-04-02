@@ -106,7 +106,7 @@ The field of machine learning studies algorithms that improve at a task through 
 
 A starting algorithm is used to resolve a particular task, and its parameter are tuned with some procedure that assumes the name of learning phase or training phase.
 
-It is common to distinguish between two kinds of learning: supervised and unsupervised. A learning algorithm is said to be supervised if it is trained on a labeled data-set, i.e. a dataset in which at each sample is associated the desired output from the algorithm, and by confronting the response of the algorithm with the desired output, the parameters of the algorithm are adjusted accordingly. Data in which each sample is associated with the corresponding desired output is said to be "labeled".  An example would be an algorithm that reads human handwriting: given an input in the form of images of handwritten characters, and the corresponding correct character, to which we can compare the response of the algorithm and adjust the parameters accordingly.
+It is common to distinguish between two kinds of learning: supervised and unsupervised. A learning algorithm is said to be supervised if it is trained on a labelled data-set, i.e. a dataset in which at each sample is associated the desired output from the algorithm, and by confronting the response of the algorithm with the desired output, the parameters of the algorithm are adjusted accordingly. Data in which each sample is associated with the corresponding desired output is said to be "labelled".  An example would be an algorithm that reads human handwriting: given an input in the form of images of handwritten characters, and the corresponding correct character, to which we can compare the response of the algorithm and adjust the parameters accordingly.
 
 A learning algorithm is said to be unsupervised if no desired output is associated with the input (the data is said to be "unsupervised"), and the parameters are only adjusted based on the comparison between samples. An example would be that of classifying customers from an on-line service based on their shopping habits. Without knowing the number of groups in which is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behaviour.
 
@@ -117,7 +117,7 @@ One of the most common artificial intelligence algorithm model is the artificial
 \includegraphics [width=0.7\textwidth] {o/neuralnetwork.png}
 \caption{The basic structure of a neural network.}
 \end{figure}
-For example, let's consider the task of classifying handwritten digits, a task at wich humans have traditionally outperformed automated methods. The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the saturation of the image in that point.
+For example, let's consider the task of classifying handwritten digits, a task at which humans have traditionally outperformed automated methods. The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the saturation of the image in that point.
 
 Each neuron in the successive layer is a function (called the activation function) of a linear combinations of this input layer:
 \begin{equation}
@@ -137,7 +137,7 @@ Then, in the successive layer, we want neurons to activate when a certain combin
 \includegraphics [width=\textwidth] {o/features.png}
 \caption{In the image of a nine, both features are present.}
 \end{figure}
-As for the activation functions, one common example is the sigmod, winch maps the real number range in the $[0,1]$ range. The final output layer would be composed of ten neurons, of winch only one would activate for each digit. For example, we would like the final output value to be one for the correct digit, and zero for all the others. Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is. Typically, a case-by-case judgement must be made, depending on the task we need to solve; there is no global rule to define the number of neurons and layers. 
+As for the activation functions, one common example is the sigmoid, winch maps the real number range in the $[0,1]$ range. The final output layer would be composed of ten neurons, of winch only one would activate for each digit. For example, we would like the final output value to be one for the correct digit, and zero for all the others. Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is. Typically, a case-by-case judgement must be made, depending on the task we need to solve; there is no global rule to define the number of neurons and layers. 
 
 Now let's discuss the problem of how effectively train the network so that its parameters have appropriate values.
 \subsection{Network training}
@@ -152,7 +152,7 @@ That is, half the square of the difference between the output vector and the cor
 Considering the space of all possible weights value, training the network reduces to finding the point of this space (that is, the set of weights) that minimizes this error function on the dataset. This is obtained thought gradient descent: we take consecutive steps to the minimum of the loss function in the space of weights, following the direction of the gradient. Notice how this requires the error function to be differentiable. But how does one calculate the gradient within respect to the weights of all the neurons that are not output neurons?
 
 \subsection{Backpropagation}
-Backpropagation is a useful technique used to obtain the gradient within respect to neurons in all layers. It is called backpropagation because in our formula the error \textit{propagates backward} from upper-layer neurons errors, in contrast with the normal neuron activation in wich information propagates forward.
+Backpropagation is a useful technique used to obtain the gradient within respect to neurons in all layers. It is called backpropagation because in our formula the error \textit{propagates backward} from upper-layer neurons errors, in contrast with the normal neuron activation in which information propagates forward.
 
 Now let's calculate the backpropagation formula for a feed-forward network with arbitrary activation functions.
 
@@ -620,8 +620,8 @@ This modification follows BCM, the visual cortex theory developed in 1981. It se
 \begin{figure} [H]
 \centering
 \includegraphics [width=12cm ] {h/cento.png}
-\label{decay}
 \caption{Visual representation of the learned weights, with exponential decay over time.}
+\label{decay}
 \end{figure}
 
 \subsection{Exponential decay over time: visual observations}
@@ -824,7 +824,7 @@ Thank you to my friends who accompanied me through these five years: Alessandra,
 Thank you to ER.GO. and the Occhialini foundation, wich gave me the means to be here, and to University of Bologna for the SAP service, wich lighted a candle when i was in darkness.
 
 For all these reasons and one thousand more, thank you all.
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \bibitem{repo}My re-implementation of the algorithm can be found at:
 
 \url{https://github.com/AlessandroDalMaso/Unsupervised\_hebbian\_learning}
