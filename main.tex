@@ -11,6 +11,7 @@
 \usepackage{comment}
 \usepackage{mathrsfs}
 \usepackage{braket}
+\usepackage{lmodern}
 \usepackage{caption}
 \usepackage{siunitx}
 \usepackage{hyperref}
@@ -51,7 +52,7 @@ Alessandro Dal Maso}}}
 \end{minipage}
 \vspace{40mm}
 \begin{center}
-Academic year{2019/2020}
+Academic year{ 2019/2020}
 \end{center}
 \end{titlepage}
 
@@ -95,7 +96,7 @@ I also observe and classify the emerging patterns among the synapses, analysing 
 
 \chapter{Introduction}
 \section{Classification}
-The problem of classification has been studied since the beginnings of the field of study of pattern recognition. It consists in finding a certain algorithm that allows a machine to classify a set of data among a certain number of classes. Applications are, as one can imagine, widespread: from allowing computers to recognize handwriting, to the automation of transport systems, to the labelling of the huge amount of data produced in modern day scientific experiment. In general, the last 20 years have seen a growing number of fields in wich a large quantity of digital data is available, the so called "big data"field. For a long time, human capabilities in this field vastly surpassed those of automated systems; In tackling this problem, we open the possibility of many more applications that traditionally were not thought as  tasks for computers.
+The problem of classification has been studied since the beginnings of the field of study of pattern recognition. It consists in finding a certain algorithm that allows a machine to classify a set of data among a certain number of classes. Applications are, as one can imagine, widespread: from allowing computers to recognize handwriting, to the automation of transport systems, to the labelling of the huge amount of data produced in modern day scientific experiment. In general, the last 20 years have seen a growing number of fields in which a large quantity of digital data is available, the so called "big data" field. For a long time, human capabilities in this field vastly surpassed those of automated systems; In tackling this problem, we open the possibility of many more applications that traditionally were not thought as  tasks for computers.
 
 In some cases, no set of classes is given: instead the task consist in separating the data among an \textit{a priori} unknown number of classes whose members share similar features. Again, applications are widespread: from marketing algorithms to medical data, to finance. The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to humans.
 
@@ -105,9 +106,9 @@ The field of machine learning studies algorithms that improve at a task through 
 
 A starting algorithm is used to resolve a particular task, and its parameter are tuned with some procedure that assumes the name of learning phase or training phase.
 
-It is common to distinguish between two kinds of learning: supervised and unsupervised. A learning algorithm is said to be supervised if it is trained on a labeled data-set, i.e. a dataset in wich at each sample is associated the desired output from the algorithm, and by confronting the response of the algorithm with the desired output, the parameters of the algorithm are adjusted accordingly. Data in wich each sample is associated with the corresponding desired output is said to be "labeled".  An example would be an algorithm that reads human handwriting: given an input in the form of images of handwritten characters, and the corresponding correct character, to wich we can compare the response of the algorithm and adjust the parameters accordingly.
+It is common to distinguish between two kinds of learning: supervised and unsupervised. A learning algorithm is said to be supervised if it is trained on a labeled data-set, i.e. a dataset in which at each sample is associated the desired output from the algorithm, and by confronting the response of the algorithm with the desired output, the parameters of the algorithm are adjusted accordingly. Data in which each sample is associated with the corresponding desired output is said to be "labeled".  An example would be an algorithm that reads human handwriting: given an input in the form of images of handwritten characters, and the corresponding correct character, to which we can compare the response of the algorithm and adjust the parameters accordingly.
 
-A learning algorithm is said to be unsupervised if no desired output is associated with the input (the data is said to be "unsupervised"), and the parameters are only adjusted based on the comparison between samples. An example would be that of classifying online customers based on their shopping habits. Without knowing the number of groups in wich is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behaviour.
+A learning algorithm is said to be unsupervised if no desired output is associated with the input (the data is said to be "unsupervised"), and the parameters are only adjusted based on the comparison between samples. An example would be that of classifying customers from an on-line service based on their shopping habits. Without knowing the number of groups in which is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behaviour.
 
 \section{Neural Networks}
 One of the most common artificial intelligence algorithm model is the artificial neural network. It consists in a number of ordered sets (called "layers") of mathematical functions (called "neurons"). In so-called feed-forward neural networks the first layer, or input layer, is composed of input neurons, that assume the value of the input data fed to the network. In each successive layer each neuron is a function of the linear combination of the neurons of the previous layer. The basic idea is that while input layer neurons activate represent the level of intensity of a single pixel, successive layers neurons can somehow be trained to activated instead when a certain feature of the input is present. The final layer of neurons produces the wanted results for that particular input.
@@ -116,17 +117,18 @@ One of the most common artificial intelligence algorithm model is the artificial
 \includegraphics [width=0.7\textwidth] {o/neuralnetwork.png}
 \caption{The basic structure of a neural network.}
 \end{figure}
-For example, let's consider the task of classifying handwritten digits. The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the saturation of the image in that point.
+For example, let's consider the task of classifying handwritten digits, a task at wich humans have traditionally outperformed automated methods. The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the saturation of the image in that point.
 
 Each neuron in the successive layer is a function (called the activation function) of a linear combinations of this input layer:
 \begin{equation}
 y_j(\textbf{x}, \textbf{w}) = f (\sum_i w_i x_i)
 \end{equation}
-As previously written, we hope that these neurons activate (e.g. assume a high value) when certain global features are presented in the input furnished. In the case of handwritten digits one of such features could be for example the presence of a loop, like in the digits zero, six, eight, nine, or the presence of a long vertical line, like in the digits one and four. In order to activate only when a long vertical line is present, it is necessary for the weights (also called "synapses strenght" in analogy with biological neurons) in the linear combination that is the argument of the neuron to be big around the middle of the image, and negative or null in the remaining image.
+As previously written, we hope that these neurons activate (e.g. assume a high value) when certain global features are presented in the input furnished. In the case of handwritten digits one of such features could be for example the presence of a loop, like in the digits zero, six, eight, nine, or the presence of a long vertical line, like in the digits one and four (see figure \ref{feat}). In order to activate only when a long vertical line is present, it is necessary for the weights (also called "synapses strength" in analogy with biological neurons) in the linear combination that is the argument of the neuron to be big around the middle of the image, and negative or null in the remaining image.
 \begin{figure} [H]
 \centering
 \includegraphics [height=4.5cm ,width=4.5cm ] {o/nine.png}
-\caption{One of the features that we would want to extract fron the orginal image.}
+\label{feat}
+\caption{One of the features that we would want to extract from the original image.}
 \end{figure}
 Then, in the successive layer, we want neurons to activate when a certain combinations of features is present. For example, to distinguish a nine from the other digits, both a upper loop and a vertical line must be present. So we would like one of these upper layer neurons to have a set of weights so that it activates if and only if both these features are present.
 
@@ -135,7 +137,7 @@ Then, in the successive layer, we want neurons to activate when a certain combin
 \includegraphics [width=\textwidth] {o/features.png}
 \caption{In the image of a nine, both features are present.}
 \end{figure}
-As for the activation functions, one common example is the sigmod, wich maps the real number range in the $[0,1]$ range. The final output layer would be composed of ten neurons, of wich only one would activate for each digit. For example, we would like the final output value to be one for the correct digit, and zero for all the others. Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is. Typically, a case-by-case judgement must be made, depending on the task we need to solve; there is no global rule to define the number of neurons and layers. 
+As for the activation functions, one common example is the sigmod, winch maps the real number range in the $[0,1]$ range. The final output layer would be composed of ten neurons, of winch only one would activate for each digit. For example, we would like the final output value to be one for the correct digit, and zero for all the others. Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is. Typically, a case-by-case judgement must be made, depending on the task we need to solve; there is no global rule to define the number of neurons and layers. 
 
 Now let's discuss the problem of how effectively train the network so that its parameters have appropriate values.
 \subsection{Network training}
@@ -145,7 +147,7 @@ At first, the weights of the network are randomly initialized, so naturally the 
 f(x)=\frac{1}{2}||x-x_{true}||_2
 \label{true}
 \end{equation}
-That is, the square of the difference between the output vector and the correct output: a one in the position corresponding to the correct digit and a zero in all other components.
+That is, half the square of the difference between the output vector and the correct output: a one in the position corresponding to the correct digit and a zero in all other components.
 
 Considering the space of all possible weights value, training the network reduces to finding the point of this space (that is, the set of weights) that minimizes this error function on the dataset. This is obtained thought gradient descent: we take consecutive steps to the minimum of the loss function in the space of weights, following the direction of the gradient. Notice how this requires the error function to be differentiable. But how does one calculate the gradient within respect to the weights of all the neurons that are not output neurons?
 
