@@ -174,7 +174,7 @@ So we would like one of these upper layer neurons to have a set of weights so th
 \includegraphics [width=\textwidth] {o/features.png}
 \caption{In the image of a nine, both features are present.}
 \end{figure}
-As for the activation functions, one common example is the sigmoid, winch maps the real number range in the $[0,1]$ range.
+As for the activation functions, one common example is the sigmoid, which maps the real number range in the $[0,1]$ range.
 The final output layer would be composed of ten neurons, of winch only one would activate for each digit.
 For example, we would like the final output value to be one for the correct digit, and zero for all the others.
 Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is.
@@ -191,8 +191,8 @@ For example, in our hypothetical network for the classification of digits, a com
 f(x)=\frac{1}{2}||x-x_{true}||_2
 \label{true}
 \end{equation}
-That is, half the square of the difference between the output vector and the correct output:
-a one in the position corresponding to the correct digit and a zero in all other components.
+That is, half the square of the difference between the output vector and the correct output.
+In this case, the correct output vector corresponds to one in the n-th dimension of the vector, where n is the digit represented by the input, and zero in all other dimensions.
 
 Considering the space of all possible weights value, training the network reduces to finding the point of this space (that is, the set of weights) that minimizes this error function on the dataset.
 This is obtained thought gradient descent:
@@ -300,7 +300,7 @@ In a 2019 paper, Dimity Krotov and John J. Hopfield proposed a neural network mo
 
 The basic idea of the algorithm is to train a matrix of weights in a two layers network - with an input layer and a supervised neural network with only one layer - a multiclass perceptron.
 Then the so trained matrix is used to transform the data, that is then meant to be classified with a supervised algorithm of some kind (for this reason, it would be improper to refer to this network as output layer).
-This makes the procedure not fully unsupervised, however we still retain the advantage of not needing a huge amount of abelled data for training, as the so processed data is more easily classified by the supervised part of the algorithm.
+This makes the procedure not fully unsupervised, however we still retain the advantage of not needing a huge amount of labelled data for training, as the so processed data is more easily classified by the supervised part of the algorithm.
 
 The authors also sum up the characteristics of the algorithm  in four points:
 \begin{itemize}
@@ -1110,7 +1110,7 @@ The method of linkage used is the Ward method, in wich the distance between two 
 \begin{figure} [H]
     \centering
     \includegraphics [width=\textwidth ] {c/e/1.png}
-    \caption{}
+    \caption{}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 \end{figure}
 
 \begin{figure} [H]
