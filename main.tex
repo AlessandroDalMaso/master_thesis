@@ -231,11 +231,16 @@ Introducing the notation
     \delta_j = \frac{\partial E}{\partial a_j}
     \label{delta}
 \end{equation}
-And deriving from \ref{pizza}
+Equation \ref{chain} becomes
+\begin{equation}
+	\frac{\partial E}{\partial w_{ij}} = \delta_j \frac{\partial a_j}{\partial w_{ij}}.
+	\ref{chain2}
+\end{equation}
+Deriving from \ref{pizza}
 \begin{equation}
 \frac{\partial a_j}{\partial w_{ij}} = l_i
 \end{equation}
-We rewrite equation \ref{chain} as
+And substituting this result in \ref{chain2} we obtain
 \begin{equation}
 \frac{\partial E}{\partial w_{ij}}= l_i \delta_j
 \end{equation}
@@ -243,7 +248,7 @@ We are almost done:
 we just need to find a way to calculate the $\delta$ for each neuron in the network.
 
 For the output layer units, this task is trivial.
-For example, if the error function is defined as in \ref{true},
+For example, if the error function is defined as in \ref{true}, the $\delta$ for those neuron is
 \begin{equation}
 \delta_j = m_j - t_j
 \end{equation}
