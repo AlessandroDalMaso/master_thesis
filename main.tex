@@ -259,17 +259,17 @@ Applying the chain rule
 \begin{equation}
 \delta_j = \sum_k \frac{\partial E}{\partial a_k} \frac{\partial a_k}{\partial a_j}.
 \end{equation}
-Where $k$ is the successive layer were we already know the values of our $\delta$, we can substitute in equation\ref{delta}
+Where $k$ is the successive layer were we already know the values of our $\delta$, we can substitute in equation \ref{delta}
 \begin{equation}
-\delta_j = \sum_k\delta_k \frac{\partial a_k}{\partial a_j}
+\delta_j = \sum_k\delta_k \frac{\partial a_k}{\partial a_j}.
 \end{equation}
-and then using equation \ref{pizza} and \ref{pizza2}
+And then using equation \ref{pizza} and \ref{pizza2}
 \begin{equation}
 \delta_j = \sum_k \delta_k \frac{\partial \sum_j w_{kj} h(a_j)}{\partial a_j}
 \end{equation}
 Which gives our final Backpropagation formula:
 \begin{equation}
-\delta_j = h'(a_j)\sum_k w_{jk}\delta_k
+\delta_j = h'(a_j)\sum_k w_{jk}\delta_k.
 \end{equation}
 
 
