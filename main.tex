@@ -414,7 +414,29 @@ The lower the Gini impurity is, the better that single feature is a separating d
 A feature that perfectly classifies the whole database has a Gini impurity of 0.
 
 For example, let's consider this toy database:
-of 4 patients with blood pressure above 140 mmHg that are at a high risk for heart disease, 1 patient with blood pressure below 140 mmHg that is at a high risk for heart disease, and 5 patients with blood pressure below 140 mmHg that are at a low risk for heart disease (Note that in order to perform this kind of learning each sample in our training database must already be correctly labelled, as random trees are a form of supervised learning ).
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+      \textbf{Blood pressure} & \textbf{Risk of hearth disease}\\
+      \hline
+      Patient 1 &  176 mmHg & High\\
+      Patient 2 &  168 mmHg & High\\
+      Patient 3 &  153 mmHg & High\\
+      Patient 4 &  145 mmHg & High\\
+      Patient 5 &  136 mmHg & Low\\
+      Patient 6 &  127 mmHg & High\\
+      Patient 7 &  125 mmHg & Low\\
+      Patient 8 &  119 mmHg & Low\\
+      Patient 9 &  118 mmHg & Low\\
+    \end{tabular}
+    \caption{Toy database: blood pressure and risk of hearth disease as evaluated by a medical professional.}
+    \label{tree_table}
+  \end{center}
+\end{table}
+
+
+of 4 patients with blood pressure above 140 mmHg that are at a high risk for heart disease, 1 patient with blood pressure below 140 mmHg that is at a high risk for heart disease, and 5 patients with blood pressure below 140 mmHg, at low risk for heart disease (Note that in order to perform this kind of learning each sample in our training database must already be correctly labelled, as random trees are a form of supervised learning ).
 Given this database, how good is a blood pressure threshold at 140 mmhg at classifying our patients in high or low risk of heart disease?
 Calculating the Gini impurity for the unsplit database gives us
 
