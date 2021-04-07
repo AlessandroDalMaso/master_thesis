@@ -81,22 +81,21 @@ The transformed data is meant to be classified with a supervised method.
 The unsupervised training phase utilizes competition between neurons by ranking the response to the given input, strengthening the synapses of the one neuron which responded best to the input through Hebbian learning and weakening the synapses of the ones that gave a weak response through anti-Hebbian learning, thus "pushing them away" from the input pattern.
 As a result, it is possible to recognize patterns among the synapses of each neuron that resemble the original input.
 
-I reproduce the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes:
+\todo[inline]{in this thesis}I reproduce the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes:
 a random forest, a supervised neural network and a support vector machine.
 The task on which the neural network was used is the classification of digits of the MNIST database.
 An accuracy of about 92\% correct guesses on a test data set was achieved by the network.
-\todo{change?} The variants of the algorithm studied include:
+The variants of the algorithm studied include:
 \begin{itemize}
 \item Switching off explicit anti-Hebbian learning;
 \item Changing the composition of batches of data;
 \item Inserting an over time exponential decay (this modification was inspired by the BCM theory of the visual cortex);
 \item Strengthening and weakening the synapses of multiple neurons per input.
-
 \end{itemize}
+\todo[inline]{spiegare più a parole che a punti}
 I also observe and classify the emerging patterns among the synapses, analysing them through agglomerative hierarchical clustering with multiple definition of distances, of which the Hausdorff inspired one seems to give the best results.
-\todo[inline]{estendere}
-\todo{ancora?}
 
+\todo[inline]{vanno aggiunte le referenze alle varie parte teoriche spiegate, non è possibile una tesi con 5 referenze in totale\ldots tutti i metodi di ML usati vanno citati, etc\ldots}
 \end{abstract}
 \tableofcontents
 
@@ -108,7 +107,7 @@ The problem of classification has been studied since the beginnings of the field
 It consists in finding a certain algorithm that allows a machine to classify a set of data among a certain number of classes.
 Applications are, as one can imagine, widespread:
 from allowing computers to recognize handwriting, to the automation of transport systems, to the labelling of the huge amount of data produced in modern day scientific experiment.
-In general, the last 20 years have seen a growing number of fields in which a large quantity of digital data is available, the so called "big data" field.
+In general, the last 20 years have seen a growing number of fields in which a large quantity of digital data is available, the so called "big data" field. \todo[inline]{anche la potenza computazionale\ldots}
 For a long time, human capabilities in this field vastly surpassed those of automated systems;
 In tackling this problem, we open the possibility of many more applications that traditionally were not thought as  tasks for computers.
 
@@ -149,7 +148,7 @@ The final layer of neurons produces the wanted results for that particular input
 \caption{The basic structure of a neural network.}
 \end{figure}
 For example, let's consider the task of classifying handwritten digits, a task at which humans have traditionally outperformed automated methods.
-The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the saturation of the image in that point.
+The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the saturation \todo[inline]{non è la saturazione, è l'intensità} of the image in that point.
 
 Each neuron in the successive layer is a function (called the activation function) of a linear combinations of this input layer:
 \begin{equation}
@@ -182,6 +181,8 @@ Typically, a case-by-case judgement must be made, depending on the task we need 
 there is no global rule to define the number of neurons and layers.
 
 Now let's discuss the problem of how effectively train the network so that its parameters have appropriate values.
+\todo[inline]{spiegare meglio la sigmoide e la RELU?}
+
 \subsection{Network training}
 At first, the weights of the network are randomly initialized, so naturally the goodness of classification is low.
 In supervised learning (commonly used with neural networks) We first define a function, called error or loss function, that quantifies the error in the classification of the dataset.
@@ -195,7 +196,7 @@ That is, half the square of the difference between the output vector and the cor
 In this case, the correct output vector corresponds to one in the n-th dimension of the vector, where n is the digit represented by the input, and zero in all other dimensions.
 
 Considering the space of all possible weights value, training the network reduces to finding the point of this space (that is, the set of weights) that minimizes this error function on the dataset.
-This is obtained thought gradient descent:
+This is obtained thought gradient descent: \todo[inline]{spiegare meglio cosa sia il gradient descent}
 we take consecutive steps to the minimum of the loss function in the space of weights, following the direction of the gradient.
 Notice how this requires the error function to be differentiable.
 But how does one calculate the gradient within respect to the weights of all the neurons that are not output neurons?
@@ -272,6 +273,7 @@ Which gives our final Backpropagation formula:
 \delta_j = h'(a_j)\sum_k w_{jk}\delta_k.
 \end{equation}
 
+\todo[inline]{spiegare anche che ci sono problemi di convergenza numerica}
 
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
@@ -296,7 +298,7 @@ As we have seen in the backpropagation section, each $\delta$ can be calculated 
 
 In multilayered networks, this means that in order to evaluate the infinitesimal evolution of a single network parameter one must know not only the current value of the weight and the activation of the two neurons connected by it, but also the activation value of all neurons in the layers above.
 
-The algorithm is said to be non-local, requiring information from all the above layers.
+The algorithm is said to be non-local, requiring information from all the above layers. \todo[inline]{far risaltare meglio il fatto che il termine locale o meno si riferisca ai layer}
 In biological neural networks, by contrast the information available to a single synapse is only relative to the two cells it connects.
 So the biological process is "local" in the sense that a synapse can evolve in any arbitrarily complicated function of some parameters, but in the end those parameters must be only those relative to the two cells it connects.
 
@@ -312,7 +314,7 @@ The authors also sum up the characteristics of the algorithm  in four points:
 	\item The change of synapse strength is proportional to the activity of the presynaptic cell and to a function of the activity of the postsynaptic cell.
 	\item Lateral inhibition between patterns is present.
 	\item Homeostatic constraints results in the strengths of the synapses of each hidden neuron converging to a sphere.
-	\item The sphere is defined for a Lebesgue norm with $p \geq 2$.
+	\item The sphere is defined for a Lebesgue norm with $p \geq 2$. \todo[inline]{spiegare meglio cosa la norma di Lebesgue}
 \end{itemize}
 
 \begin{figure} [H]
@@ -344,7 +346,7 @@ And $\tau_L$ is a time scale parameter,  $W_{ij}$ is the strength of the synapse
 As evaluating $g$ implies ranking all hidden neurons by activation, there's an implicit competition between patterns.
 The cases in which has value of one and a negative value correspond to Hebbian and anti-Hebbian learning respectively.
 
-Within regards to computational complexity, it was expected the computational complexity to be O(N), where N is the number of epochs processed.
+Within regards to computational complexity, it was expected the computational complexity to be O(N) \todo[inline]{spiegare cosa sia la complessità computazionale}, where N is the number of epochs processed.
 Trying five different values of N gave a linear correlation coefficient of 0.99, thus confirming a computational complexity of O(N).
 
 \subsection{Purpose of this paper}
@@ -353,7 +355,7 @@ I reproduced the model, analysing its behaviour under various variations from th
 
 \subsection{Switching off explicit anti-Hebbian learning}
 
-In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}.
+In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}. \todo[inline]{fare riferimento a figure future è difficile da seguire\ldots}
 As one can imagine, this is not quite useful for classification:
 in these cases the classification score lowered to around 20\% in all supervised learning scenarios.
 
@@ -370,6 +372,7 @@ Another change observed is that now the weights actually converge to a sphere (f
 \chapter{Accuracy and visual characterization}
 \section{Supervised phase}
 
+\todo[inline]{spiegare il database MNIST}
 Accuracy is defined the percentage of correctly classified samples.
 It is, of course, not useful to test this quantification of our model's performance on the same database used to train our model.
 For this reason, the database has been split in two:
@@ -382,7 +385,7 @@ To actually classify samples, we used three different supervised algorithms, to 
 The random forest is a supervised machine learning method that is based on a set of random trees, a simpler classification method.
 
 \subsubsection{Decision trees}
- At its core, a decision tree is nothing more ta set of binary decisions based on data associated with the samples.
+ At its core, a decision tree is nothing more than a set of binary decisions based on data associated with the samples.
 The data can be both categorical (i.e.  it is a true of false affirmation) or numerical (i.e.  it has a value associated to it), in which case we make use of thresholds to turn use it as if it was categorical.
 (see figure \ref{chestt})
 
@@ -469,7 +472,7 @@ During our descent long the tree, if we ever find a node were subsequential spli
 
 \subsubsection{Building random forests}
 Random trees, while easy to build, interpret and implement, as a method for supervised learning are (sadly) hindered by the low accuracy that characterizes this method.
-By their own nature they are very sensible to outliers.
+By their own nature they are very sensible to outliers. \todo[inline]{giustificare! citazioni, esempi, etc\ldots}
 
 Random forests are a method for adding flexibility to decision trees.
 A random forest is a set of decision trees in which classification is given by a majority vote from all trees.
@@ -579,6 +582,8 @@ A kernel function is a function that acts as a dot product on the constructed hi
 Where $\phi$ is the transformation in higher dimensions of our samples.
 Now, using the results of the $N \times N$ kernel function results, where $N$ is the number of samples we can still calculate the parameters of our hyperplane without ever actually computing all parameters for our features in higher dimensions.
 
+\todo[inline]{deve spiegare più nel dettaglio il metodo che ha implementato, quasi non c'è per nulla la spiegazione!}
+
 \section{Accuracy table}
 
 Now that we have explained the three supervised methods (The supervised network is explained in the introduction) used in conjunction with our algorithm we can see the accuracy reached with all three methods, where accuracy is defined as the percentage of correctly classified samples of our 10,000 samples testing database.
@@ -613,7 +618,7 @@ This would seem to work best when working in conjunction with a random forest si
 It is peculiar that instead, we observe a drop in accuracy when using the method in conjunction with the random forest.
 
 \section{Visual characterization of patterns}
-
+\todo[inline]{questi sono i risultati del modello originale di hopfield? non è chiaro}
 \begin{figure} [H]
 \centering
 \includegraphics [width=7.5cm ] {o/mnist.png}
@@ -633,7 +638,7 @@ It is peculiar that instead, we observe a drop in accuracy when using the method
 \begin{itemize}
     \item If we confront the emerging patterns in figure \ref{heatmap} with some samples randomly extracted from the dataset (figure \ref{mnist}), We can see that the emerging patterns resemble quite well the original digits. However, they are not a simple copy. For instance, in some cases negative values are present, while the original samples are all positive. From a mathematical standpoint, this is due to anti-Hebbian learning, in which weights are pushed away from a specific pattern.
     \item Patterns are also significantly different from those emerging in backpropagation-based neural networks (\ref{backnet}).
-    \item All ten digits are present. There are other recurring patterns called "chromosome" and "six-pointed". Statistical frequencies are shown in graph \ref{cerchio1}.
+    \item All ten digits are present. There are other recurring patterns called "chromosome" and "six-pointed". Statistical frequencies are shown in graph \ref{cerchio1}. \todo[inline]{spiegare quali siano queste forme\ldots chi le ha definite, lei o hopfield?}
     \item Some patterns did not converge to something recognizable. An example is the synapses in the third row, fifth column of figure \ref{heatmap}.
     \item many zeros appear to be bordered in negative (blue) values. No other negative-encircled digits were observed in three different runs aside from the six in figure \ref{heatmap}, fourth row, fifth column.
     \item A chi square test was performed, validating the hypothesis of all digits being equally represented with $p  = 0.025$.
@@ -642,19 +647,19 @@ It is peculiar that instead, we observe a drop in accuracy when using the method
 \begin{figure} [H]
     \centering
     \includegraphics [width = 12cm] {h/backnet.png}
-    \caption{Emerging pattern in a backpropagation network.}
+    \caption{Emerging pattern in a backpropagation network. \todo[inline]{manca contesto, questi sono i risultati per la rete neurale anche in input?}}
     \label{backnet}
 \end{figure}
 
 \begin{figure} [H]
     \centering
     \includegraphics [width=12cm ] {o/bar2.png}
-    \caption{Statistical frequency of observed patterns, recorded over three different training runs. An example of \textit{Six-pointed} (SP) pattern can be found in image \ref{heatmap}, row 2, column 2, while an example of \textit{Chromosome} pattern can be found in row 5, column 9. A chi-square test has been performed, accepting the null hypothesis with $p =0.025$.}
+    \caption{Statistical frequency of observed patterns \todo[inline]{ottenuti con che metodo?}, recorded over three different training runs. An example of \textit{Six-pointed} (SP) pattern can be found in image \ref{heatmap}, row 2, column 2, while an example of \textit{Chromosome} pattern can be found in row 5, column 9. A chi-square test has been performed, accepting the null hypothesis with $p =0.025$.}
     \label{cerchio1}
 \end{figure}
 
  Convergence to a sphere was not achieved:
-in the observed behaviour was that some weights would always remain above the range of convergence, no matter the number of epochs (see figure \ref{uu_hist}).
+in the observed behaviour was that some weights would always remain above the range of convergence \todo[inline]{quale sarebbe questo range?}, no matter the number of epochs (see figure \ref{uu_hist}).
 However it was achieved when anti Hebbian learning was turned off (see figure \ref{ii_hist})
 \begin{figure} [H]
     \centering
@@ -698,7 +703,7 @@ These figures appear to be consistent, reappearing unchanged at modifications of
 \begin{figure} [H]
 \centering
 \includegraphics [width=12cm ] {o/ii_hist.png}
-\caption{Histogram of the p-norms of weight vectors for each hidden neuron. Explicit anti-Hebbian learning is turned off.}
+\caption{Histogram of the p-norms of weight vectors for each hidden neuron. Explicit anti-Hebbian learning is turned off. \todo[inline]{manca un commento nel testo}}
 \label{ii_hist}
 \end{figure}
 
@@ -732,6 +737,7 @@ for example the number 4 is handwritten either with a closed loop, as seen in th
 Such differences, and more subtle ones could be picked up by such a modification.
 The other modification, making use of "one-vs-one" batches (figure \ref{1v1}), is interesting for a different reason:
 It could lead to a better differentiation between each two digits, by confronting them through a single batch.
+\todo[inline]{var vedere i risultati in questo caso}
 
 \section{Exponential decay over time}
 
@@ -751,7 +757,7 @@ In the first, modification, is added the decay term $-\epsilon W_i$ to the main 
     \tau_L \frac{dW_{ij}}{dt} = g(h_i)(R^p v_i - \braket{\textbf{W,v}}_i W_{ij} ) -\epsilon W_{ij}
 \end{equation}
 
-The value used for $\epsilon$ was 0.05.
+The value used for $\epsilon$ was 0.05. \todo[inline]{con altri valori che cosa si ottiene?}
 
 \subsection{Accuracy of prediction}
 
@@ -804,7 +810,7 @@ Examining the seemingly blank sets of synapses we can see (figure \ref{nearzero}
 
 \section{Multiple neurons reinforced}
 
-In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the k-th most activated neuron and is null in all other cases.
+In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the k-th most activated neuron and is null in all other cases. \todo[inline]{spiegare meglio, non è chiaro}
 
 \subsection{Accuracy of prediction}
 
@@ -836,7 +842,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 \subsection{Multiple neurons reinforced: visual observations}
 
 \begin{itemize}
-    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning.
+    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning. \todo[inline]{come cambiano i risultati con altri numeri di neuroni}
     \item Confronting this with the convergence pattern of the original algorithm, but with anti-Hebbian learning switched off  (see figure \ref{nodelta}) We observe a close similarity, except for five patterns that did not fully converged to a prototype of a digit.
     \item However, some digits seem less precise, for example in figure \ref{multiple} first row seventh column.
 \end{itemize}
@@ -859,6 +865,8 @@ Human experience is vital in this as there's no objective best all case answer.
 Then we start by measuring the distances between all starting continents, and joining in a clusters the two closest.
 The final dendrogram might look like this:
 (figure \ref{conte})
+
+\todo[inline]{non è chiara la spiegazione. dettagliare meglio come funzioni il clustering agglomerativo; spiegare anche i criteri di agglomerazione fra cluster e le distanze più comuni.}
 
 \begin{figure} [H]
 \centering
@@ -922,7 +930,7 @@ This approach has the advantage that a slight misplacement in space of weights d
     \label{zero_three}
 \end{figure}
 
-The definition of distance is
+The definition of distance \todo[inline]{fra cluster} is
 
 \begin{equation}
     distance(A, B) = max(max_A(min_B(d(a,b))), max_B(min_A(d(a,b))))
@@ -931,14 +939,14 @@ The definition of distance is
 Where $a$ and $b$ are points belonging to set A and B respectively, and $d(a,b)$ is their euclidean distance.
 The definition of distance between clusters is the average of all between-clusters element distances.
 
-This definition proved to be the best out of others used, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
+This definition proved to be the best out of others used \todo[inline]{come sono state valutate? facciamo vedere dei risultati quantitativi per i vari casi!}, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
 
 
 
 \section{Resulting clusters from 18-clusters agglomerative hierarchical clustering}
 
-With this definition, out of 18 clusters, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
-All clusters can be visualized in the appendix.
+With this definition, out of 18 clusters \todo[inline]{decisi come? perché 18 e non 17 o 19?}, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
+All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri ai cluster in modo da capire come si agglomerano}
 
 \begin{figure} [H]
     \centering
@@ -992,7 +1000,7 @@ All clusters can be visualized in the appendix.
 
 \chapter{Conclusions}
 
-Considering first of all the results obtained in table \ref{bbb}, one must not be surprised that the results are much lower than those in the original paper by Hopfield and Krotov (in which a 1.46\% accuracy is reached), as the number of both hidden neurons and processed epochs is much smaller (2000 hidden units and 1000 epochs vs 100 hidden units and 100 epochs), which greatly reduces both computational times and accuracy of prediction.
+Considering first of all the results obtained in table \ref{bbb}, one must not be surprised that the results are much lower than those in the original paper by Hopfield and Krotov (in which a 1.46\% accuracy is reached \todo[inline]{sicuro del numero?}), as the number of both hidden neurons and processed epochs is much smaller (2000 hidden units and 1000 epochs vs 100 hidden units and 100 epochs), which greatly reduces both computational times and accuracy of prediction. \todo[inline]{sarebbe da far vedere un confronto corrispondente, non ha senso parlare dei risultati del paper}
 
 The emerging patterns among synapses strength are of particular interest.
 Unlike in the case of more traditional, backpropagation based networks, they are interpretable by the human eye as similar to prototypes of the input samples, their utility goes beyond that.
@@ -1137,7 +1145,7 @@ The method of linkage used is the Ward method, in wich the distance between two 
 \begin{figure} [H]
     \centering
     \includegraphics [width=\textwidth ] {c/e/1.png}
-    \caption{}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    \caption{}
 \end{figure}
 
 \begin{figure} [H]
