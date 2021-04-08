@@ -81,17 +81,16 @@ The transformed data is meant to be classified with a supervised method.
 The unsupervised training phase utilizes competition between neurons by ranking the response to the given input, strengthening the synapses of the one neuron which responded best to the input through Hebbian learning and weakening the synapses of the ones that gave a weak response through anti-Hebbian learning, thus "pushing them away" from the input pattern.
 As a result, it is possible to recognize patterns among the synapses of each neuron that resemble the original input.
 
-\todo[inline]{in this thesis}I reproduce the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes:
+In this thesis I reproduce the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes:
 a random forest, a supervised neural network and a support vector machine.
 The task on which the neural network was used is the classification of digits of the MNIST database.
 An accuracy of about 92\% correct guesses on a test data set was achieved by the network.
 The variants of the algorithm studied include:
-\begin{itemize}
-\item Switching off explicit anti-Hebbian learning;
-\item Changing the composition of batches of data;
-\item Inserting an over time exponential decay (this modification was inspired by the BCM theory of the visual cortex);
-\item Strengthening and weakening the synapses of multiple neurons per input.
-\end{itemize}
+Switching off explicit anti-Hebbian learning;
+Changing the composition of batches of data;
+Inserting an over time exponential decay (this modification was inspired by the BCM theory of the visual cortex);
+Strengthening and weakening the synapses of multiple neurons per input.
+
 \todo[inline]{spiegare più a parole che a punti}
 I also observe and classify the emerging patterns among the synapses, analysing them through agglomerative hierarchical clustering with multiple definition of distances, of which the Hausdorff inspired one seems to give the best results.
 
@@ -597,9 +596,9 @@ Now that we have explained the three supervised methods (The supervised network 
       Supervised network & 90.0 ± 0.2 & 89.4 ± 0.3 \\
       SVM & 90.3 ± 0.1 & 91.6 ± 0.3 \\
     \end{tabular}
-    \label{bbb}
   \end{center}
   \caption{Accuracy of prediction of three supervised methods. Percentage of corrected guesses are reported in the central and right columns.}
+  \label{bbb}
 \end{table}
 
 \subsection{Observations on table \ref{bbb}}
@@ -769,10 +768,10 @@ The value used for $\epsilon$ was 0.05. \todo[inline]{con altri valori che cosa 
       Random forest & 91.6  ± 0.2\\
       Supervised network & 86.3 ± 0.5\\
       SMV & 89.3 ± 0.2\\
-        \label{decayT}
     \end{tabular}
   \end{center}
   \caption{Percentual Accuracy of prediction of three supervised methods.}
+  \label{decayT}
 \end{table}
 
 The algorithm performed worse with this modification, as we can see in table \ref{decayT}.
@@ -822,10 +821,10 @@ In the second BCM-inspired modification, more than one neuron undergoes Hebbian 
       Random forest & 91.7  ± 0.01\\
       Supervised network & 81.4 ± 0.4\\
       SMV & 85.7 ± 0.3\\
-      \label{4tab}
     \end{tabular}
-    \caption{Accuracy of prediction of three supervised methods.}
   \end{center}
+  \caption{Accuracy of prediction of three supervised methods.}
+  \label{4tab}
 \end{table}
 
 Again, the algorithm performed worse with this modification (table \ref{4tab}).
