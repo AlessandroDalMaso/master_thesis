@@ -147,7 +147,7 @@ The final layer of neurons produces the wanted results for that particular input
 \caption{The basic structure of a neural network.}
 \end{figure}
 For example, let's consider the task of classifying handwritten digits, a task at which humans have traditionally outperformed automated methods.
-The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the saturation \todo[inline]{non è la saturazione, è l'intensità} of the image in that point.
+The input  samples consist in a grayscale image of the written digits, so to each pixel in the image is associated a value from 0 to 1 proportional to the intensity of the image in that point.
 
 Each neuron in the successive layer is a function (called the activation function) of a linear combinations of this input layer:
 \begin{equation}
@@ -172,7 +172,36 @@ So we would like one of these upper layer neurons to have a set of weights so th
 \includegraphics [width=\textwidth] {o/features.png}
 \caption{In the image of a nine, both features are present.}
 \end{figure}
-As for the activation functions, one common example is the sigmoid, which maps the real number range in the $[0,1]$ range.
+
+As for the activation functions, one common example is the sigmoid:
+
+\begin{equation}
+	S(x) = \frac{1}{1+e^{-x}}.
+	\label{sigmoid}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{o/sigmoid.png}
+\caption{Equation \ref{sigmoid}.}
+\end{figure}
+Which maps the real number range in the $[0,1]$ range, a property useful in network training to avoid a single neuron value overshadowing all other values.
+Also, having all neurons assume a positive value is commonly a wanted feature of networks, and the same can be said of differentiability of the activation function.
+Another common function used is the ReLU (rectified linear units):
+
+\begin{equation}
+	RelU(x) = max(0, x).
+	\label{relu}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=5cm]{o/relu.png}
+\caption{Equation \ref{relu}.}
+\end{figure}
+
+Which is differentiable and strictly positive, like the sigmoid.
+
 The final output layer would be composed of ten neurons, of winch only one would activate for each digit.
 For example, we would like the final output value to be one for the correct digit, and zero for all the others.
 Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is.
@@ -180,7 +209,6 @@ Typically, a case-by-case judgement must be made, depending on the task we need 
 there is no global rule to define the number of neurons and layers.
 
 Now let's discuss the problem of how effectively train the network so that its parameters have appropriate values.
-\todo[inline]{spiegare meglio la sigmoide e la RELU?}
 
 \subsection{Network training}
 At first, the weights of the network are randomly initialized, so naturally the goodness of classification is low.
