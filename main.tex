@@ -301,7 +301,7 @@ Which gives our final Backpropagation formula:
 \end{equation}
 
 \todo[inline]{spiegare anche che ci sono problemi di convergenza numerica}
-
+\todo[inline]{cioè?}
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
 In a 2019 paper by Dimitry Krotov and John J.
@@ -322,12 +322,12 @@ To use an analogy by D. Krotov, supervised learning would be like like teaching 
 \subsection{implausibility of backpropagation}
 As we have seen in the backpropagation section, each $\delta$ can be calculated by the deltas of the previous layer, given that one knows all the weights and activations.
 
-
 In multilayered networks, this means that in order to evaluate the infinitesimal evolution of a single network parameter one must know not only the current value of the weight and the activation of the two neurons connected by it, but also the activation value of all neurons in the layers above.
 
-The algorithm is said to be non-local, requiring information from all the above layers. \todo[inline]{far risaltare meglio il fatto che il termine locale o meno si riferisca ai layer}
+The algorithm is said to be non-local, requiring information from all the above layers.
 In biological neural networks, by contrast the information available to a single synapse is only relative to the two cells it connects.
 So the biological process is "local" in the sense that a synapse can evolve in any arbitrarily complicated function of some parameters, but in the end those parameters must be only those relative to the two cells it connects.
+As we will see shortly, our algorithm is local in a less strict sense: in the sense that a synapse evolves only with the information of the layers it connects; no above layer information is used in its evolution.
 
 \section{The algorithm}
 In a 2019 paper, Dimity Krotov and John J. Hopfield proposed a neural network model whose main characteristics are unsupervised learning and locality of information.
@@ -341,8 +341,14 @@ The authors also sum up the characteristics of the algorithm  in four points:
 	\item The change of synapse strength is proportional to the activity of the presynaptic cell and to a function of the activity of the postsynaptic cell.
 	\item Lateral inhibition between patterns is present.
 	\item Homeostatic constraints results in the strengths of the synapses of each hidden neuron converging to a sphere.
-	\item The sphere is defined for a Lebesgue norm with $p \geq 2$. \todo[inline]{spiegare meglio cosa la norma di Lebesgue}
+	\item The sphere is defined for a Lebesgue norm with $p \geq 2$.
 \end{itemize}
+
+The Lebesgue norm for a finite-dimensional vector is defined as
+
+\begin{equation}
+	||(x_1, x_2, \cdots x_n)||_p = (|x_1|^p+|x_2|^p+\cdots +|x_n|^p)^{1/p}
+\end{equation}
 
 \begin{figure} [H]
 \centering
