@@ -223,8 +223,15 @@ That is, half the square of the difference between the output vector and the cor
 In this case, the correct output vector corresponds to one in the n-th dimension of the vector, where n is the digit represented by the input, and zero in all other dimensions.
 
 Considering the space of all possible weights value, training the network reduces to finding the point of this space (that is, the set of weights) that minimizes this error function on the dataset.
-This is obtained thought gradient descent: \todo[inline]{spiegare meglio cosa sia il gradient descent}
-we take consecutive steps to the minimum of the loss function in the space of weights, following the direction of the gradient.
+This is obtained thought a technique known as gradient descent.
+In gradient descent we calculate the gradient of the loss function, then we take consecutive steps in the opposite direction of the gradient to the minimum of the loss function.
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=6cm]{o/gradient.png}
+\caption{Following the opposite direction of gradient will lead to the minimum, given that the function is convex.}
+\end{figure}
+
 Notice how this requires the error function to be differentiable.
 But how does one calculate the gradient within respect to the weights of all the neurons that are not output neurons?
 
@@ -347,8 +354,11 @@ The authors also sum up the characteristics of the algorithm  in four points:
 The Lebesgue norm for a finite-dimensional vector is defined as
 
 \begin{equation}
-	||(x_1, x_2, \cdots x_n)||_p = (|x_1|^p+|x_2|^p+\cdots +|x_n|^p)^{1/p}
+	||x||_p = (|x_1|^p+|x_2|^p+\cdots +|x_n|^p)^{1/p}
 \end{equation}
+
+Where $p$ is a real number bigger than one.
+This definition reduces to the euclidean norm when $p=2$.
 
 \begin{figure} [H]
 \centering
