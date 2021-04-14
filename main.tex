@@ -9,7 +9,7 @@
 \usepackage{caption}
 \usepackage{hyperref} % cite URLs
 \usepackage{todonotes}
-%\usepackage{apacite}
+\usepackage{apacite} % bibliography
 \usepackage{siunitx} % remove?
 \usepackage{latexsym} % remove?
 \usepackage{graphicx} % remove?
@@ -20,9 +20,12 @@
 \textwidth=450pt\oddsidemargin=0pt
 \graphicspath{{img/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png, .gif}
+\bibliographystyle{apacite}
 \title{Impact of inter-synaptic competition on the learning dynamics of a biologically-inspired neural network}
 \author{Alessandro Dal Maso}
 \date{May 10 2021}
+
+
 \begin{document}
 \begin{titlepage}
 \begin{center}
@@ -93,6 +96,10 @@ Inserting an over time exponential decay (this modification was inspired by the 
 Strengthening and weakening the synapses of multiple neurons per input.
 
 I also observe and classify the emerging patterns among the synapses, analysing them through agglomerative hierarchical clustering with multiple definition of distances, of which the Hausdorff inspired one seems to give the best results.
+
+My re-implementation of the algorithm can be found at:
+
+\url{https://github.com/AlessandroDalMaso/Unsupervised\_hebbian\_learning}
 
 \todo[inline]{vanno aggiunte le referenze alle varie parte teoriche spiegate, non è possibile una tesi con 5 referenze in totale\ldots tutti i metodi di ML usati vanno citati, etc\ldots}
 \end{abstract}
@@ -1094,18 +1101,8 @@ Olly, you've been a real friend across any political or religious barrier.
 Thank you to ER.GO. and the Occhialini foundation, which gave me the means to be here, and to University of Bologna for the SAP service, which lighted a candle when I was in darkness.
 
 For all these reasons and one thousand more, thank you all.
-\begin{thebibliography}{99}
-\bibitem{repo}My re-implementation of the algorithm can be found at:
 
-\url{https://github.com/AlessandroDalMaso/Unsupervised\_hebbian\_learning}
-
-\bibitem{Hopfield}Dimitry Krotov, John J. Hopfield, \textit{Unsupervised learning by competing hidden units}
-DOI: 10.1073/pnas.1820458116
-\bibitem{distance}Vito Di Gesù, Valery Starovoitov, \textit{Distance-based functions for image comparison}
-DOI: 10.1016/S0167-8655(98)00115-9
-\bibitem{bishop}Christopher M. Bishop, \textit{Pattern recognition and machine learning}, Springer 2006
-\bibitem{bcm}E. L. Bienerstock, L. N. Cooper, P. W. Munro, \textit{Theory for the development of neuron selectivity: orientation specificity and binocular interactions in visual cortex}, The Journal of Neuroscience, January 1982
-\end{thebibliography}
+\bibliography{bibliography}
 
 \appendix
 
