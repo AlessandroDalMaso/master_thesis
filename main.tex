@@ -398,7 +398,7 @@ I reproduced the model, analysing its behaviour under various variations from th
 
 \subsection{Switching off explicit anti-Hebbian learning}
 
-In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}. \todo[inline]{fare riferimento a figure future è difficile da seguire\ldots}
+In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}. \todo[inline]{fare riferimento a figure future è difficile da seguire (nota: l'alternativa è spostare questo paragrafo, diminuendo l'importanza di questa variante dell'algoritmo. dovrei farlo?)}
 As one can imagine, this is not quite useful for classification:
 in these cases the classification score lowered to around 20\% in all supervised learning scenarios.
 
@@ -412,10 +412,11 @@ Now the weights are only positive and strictly resemble prototypes of digits (fi
 The accuracy of prediction is only minimally changed.
 Another change observed is that now the weights actually converge to a sphere (figures \ref{uu_hist} and \ref{ii_hist})
 
-\chapter{Accuracy and visual characterization}
-\section{Supervised phase}
-
 \todo[inline]{spiegare il database MNIST}
+
+\chapter{Accuracy and visual characterization}
+
+\section{Supervised phase}
 Accuracy is defined the percentage of correctly classified samples.
 It is, of course, not useful to test this quantification of our model's performance on the same database used to train our model.
 For this reason, the database has been split in two:
