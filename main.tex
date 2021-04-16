@@ -535,7 +535,7 @@ During our descent long the tree, if we ever find a node were subsequential spli
 
 \subsubsection{Building random forests}
 Random trees, while easy to build, interpret and implement, as a method for supervised learning are (sadly) hindered by the low accuracy that characterizes this method.
-By their own nature they are very sensible to outliers. \todo[inline]{giustificare! citazioni, esempi, etc\ldots}
+By their own nature they are very sensible to outliers. The reason for this can be understood by looking at their hierarchical nature: a single split that is not very good propagates this error downstream.\todo[inline]{giustificare! citazioni, esempi, etc\ldots}
 
 Random forests are a method for adding flexibility to decision trees.
 A random forest is a set of decision trees in which classification is given by a majority vote from all trees.
