@@ -220,7 +220,7 @@ Now let's discuss the problem of how effectively train the network so that its p
 
 \subsection{Network training}
 At first, the weights of the network are randomly initialized, so naturally the goodness of classification is low.
-In supervised learning (commonly used with neural networks) We first define a function, called error or loss function, that quantifies the error in the classification of the dataset.
+In supervised learning (commonly used with neural networks) We first define a function, called error or loss function, that quantifies the error in the classification of the datasets.
 For example, in our hypothetical network for the classification of digits, a common choice for the error function would be
 
 \begin{equation}
@@ -402,7 +402,7 @@ Trying five different values of N gave a linear correlation coefficient of 0.99,
 
 \subsection{Purpose of this paper}
 
-I reproduced the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working on the MNIST handwritten digits database in conjunction with three different supervised algorithms used for classification purposes.
+I reproduced the model, analyzing its behavior under various variations from the original, quantifying its prediction accuracy working on the MNIST handwritten digits database in conjunction with three different supervised algorithms used for classification purposes.
 
 \subsection{Switching off explicit anti-Hebbian learning}
 
@@ -420,12 +420,19 @@ Now the weights are only positive and strictly resemble prototypes of digits (fi
 The accuracy of prediction is only minimally changed.
 Another change observed is that now the weights actually converge to a sphere (figures \ref{uu_hist} and \ref{ii_hist})
 
-\todo[inline]{spiegare il database MNIST}
 \section{The MNIST database}
 
-The Modified National Institute of Standards and Technology database is a set of grayscale-level, centered, size-normalized handwritten 28 by 28 pixels images of handwritten digits.
-The digits were 
+The Modified National Institute of Standards and Technology database is a set of images of handwritten digits. The images are grayscale-level, centered, size-normalized and have a resolution of 28 by 28 pixels images of handwritten digits.
+The digits were written by 500 writers, United States Census Bureau employees and US high school students.
 
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=7.5cm ] {o/mnist.png}
+	\caption{Samples from the data set.}
+	\label{mnist}
+\end{figure}
+
+The dataset is commonly used as a simple dataset for testing machine learning algorithms.
 \chapter{Accuracy and visual characterization}
 
 \section{Supervised phase}
@@ -675,12 +682,7 @@ It is peculiar that instead, we observe a drop in accuracy when using the method
 
 \section{Visual characterization of patterns}
 \todo[inline]{questi sono i risultati del modello originale di hopfield? non è chiaro}
-\begin{figure} [H]
-\centering
-\includegraphics [width=7.5cm ] {o/mnist.png}
-\caption{Samples from the data set.}
-\label{mnist}
-\end{figure}
+
 
 \begin{figure} [H]
     \centering
