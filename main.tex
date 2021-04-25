@@ -315,8 +315,7 @@ Which gives our final Backpropagation formula:
 \delta_j = h'(a_j)\sum_k w_{jk}\delta_k.
 \end{equation}
 
-\todo[inline]{spiegare anche che ci sono problemi di convergenza numerica}
-\todo[inline]{cioè?}
+\todo[inline]{spiegare anche che ci sono problemi di convergenza numerica (nota: cioè?)}
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
 In a 2019 paper by Dimitry Krotov and John J.
@@ -633,17 +632,43 @@ The transformation $x \xrightarrow{} (x, x^2, x^3, ...)$ is a common choice know
     \label{2dim}
 \end{figure}
 
-A key point to take into consideration is that adding new dimensions can rapidly make the computational costs infeasible.
-The procedure that allows us to overcome this obstacle is known as the kernel trick.
+A key point to take into consideration is that adding new dimensions can rapidly make the computational costs infeasible: as one can imagine, when operating on realistic database the number of dimensions that one needs to add to make the data separable can be very big.
+Fortunately, there is a way to operate the calculations needed without never actually calculating the values of these extra dimensions for each sample.
 
-A kernel function is a function that acts as a dot product on the constructed higher dimensional space we have built for our support vector machine.
-
+Let $\phi (x)$ be the function that transposes in higher dimension our samples $x$. It is possible to express the equation that allows us to calculate the best separation hyperplane $W$ only as a function of the matrix $K$:
 \begin{equation}
-    k(x_1,x_2)= \braket{\phi (x_1),\phi (x_2)}
-\end{equation}
+K =
+	\begin{bmatrix}
+		\phi (x_1) \phi(x_1)^T & \ldots & \phi (x_1) \phi(x_n)^T \\
+		\ldots                 & \ldots & \ldots \\
+		\phi (x_n) \phi(x_1)^T & \ldots & \phi (x_n) \phi(x_n)^T
+	\end{bmatrix}
+\end{equation}	
 
 Where $\phi$ is the transformation in higher dimensions of our samples.
-Now, using the results of the $N \times N$ kernel function results, where $N$ is the number of samples we can still calculate the parameters of our hyperplane without ever actually computing all parameters for our features in higher dimensions.
+
+Now, Mercer's theorem states that such a matrix, being symmetrical and positive semidefinite, can be expressed as a function of $x$ without explicitly calculating $\phi (x)$: 
+
+\begin{equation}
+K =
+\begin{bmatrix}
+	k(x_1, x_1) & \ldots & k(x_1, x_n) \\
+	\ldots                 & \ldots & \ldots \\
+	k(x_n, x_1) & \ldots & k(x_n, x_n)
+\end{bmatrix}
+\end{equation}
+
+For example, consider this transformation from 2 to 3 dimensions:
+
+\begin{equation}
+	\phi (x_1, x_2) = (x_1^2, \sqrt 2 x_1x_2, x_2^2)
+\end{equation}
+
+The dot product between the vectors transposed to three dimensions with this transformation can be expressed as
+
+\begin{equation}
+	\phi(\textbf{x}) \cdot \phi(\textbf{y}) = x_1^2y_1^2 + 2x_1x_2y_1y_2 + x_2^2y_2^2 = (x_1y_1+x_2y_2)^2 = (\textbf{x} \cdot \textbf{y})^2.
+\end{equation}
 
 \todo[inline]{deve spiegare più nel dettaglio il metodo che ha implementato, quasi non c'è per nulla la spiegazione!}
 
