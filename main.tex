@@ -346,9 +346,15 @@ As we will see shortly, our algorithm is local in a less strict sense: in the se
 \section{The algorithm}
 In a 2019 paper, Dimity Krotov and John J. Hopfield proposed a neural network model whose main characteristics are unsupervised learning and locality of information.
 
-The basic idea of the algorithm is to train a matrix of weights in a two layers network - with an input layer and a supervised neural network with only one layer - a multiclass perceptron.
-Then the so trained matrix is used to transform the data, that is then meant to be classified with a supervised algorithm of some kind (for this reason, it would be improper to refer to this network as output layer).
-This makes the procedure not fully unsupervised, however we still retain the advantage of not needing a huge amount of labelled data for training, as the so processed data is more easily classified by the supervised part of the algorithm.
+The basic idea of the algorithm is to train a matrix of weights in a two layers network -in which one of the layers is our input layer.
+Then the so trained matrix is used to transform the data, that is then meant to be classified with a supervised algorithm of some kind.
+This makes the procedure not fully unsupervised, however we still retain the advantage of not needing a huge amount of labeled data for training, as the so processed data is more easily classified by the supervised part of the algorithm.
+
+\subsection{Training}
+
+The parameters of the network, corresponding to the scalars that compose the matrix, are trained using the gradient descent technique previously discussed, with a variation:
+
+Processing the whole database at each step of training would be time consuming. Instead, using a technique known as \textit{stochastic} gradient descent, we take a subset of the database  (known as minibatch) and treat it as the whole database. Due to statistical fluctuations, the minibatch will obviously not be representative of the whole database: at a practical level, this means that the gradient we are calculating is not precisely in the direction of the actual gradient, the one that we would only get processing the whole database in a single minibatch. We are, however, trading a reasonable amount of precision for the possibility of processing way more batches that we would we able to if each batch was composed of the whole database, so in the end working in minibatches works in favor of our objective, that is reaching convergence to a set of trained weights able to make predictions on the testing database.
 
 The authors also sum up the characteristics of the algorithm  in four points:
 \begin{itemize}
