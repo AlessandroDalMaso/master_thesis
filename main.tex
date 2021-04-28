@@ -232,7 +232,10 @@ In this case, the correct output vector corresponds to one in the n-th dimension
 
 Considering the space of all possible weights value, training the network reduces to finding the point of this space (that is, the set of weights) that minimizes this error function on the dataset.
 This is obtained thought a technique known as gradient descent.
-In gradient descent we calculate the gradient of the loss function, then we take consecutive steps in the opposite direction of the gradient to the minimum of the loss function.
+In gradient descent we calculate the gradient of the loss function, then we take consecutive steps in the opposite direction of the gradient until we find the minimum of the loss function.
+The steps are typically taken smaller and smaller to increase precision.
+
+Within the context of machine learning, the gradient is calculated by processing a database, the training database. The act of processing the database and updating the parameters of the model is referred to as an "epoch".
 
 \begin{figure}[H]
 \centering
@@ -318,8 +321,7 @@ Which gives our final Backpropagation formula:
 \todo[inline]{spiegare anche che ci sono problemi di convergenza numerica (nota: cioè?)}
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
-In a 2019 paper by Dimitry Krotov and John J.
-Hopfield is illustrated a unsupervised algorithm for training a neural network in an unsupervised fashion inspired by biological neural networks.
+In a 2019 paper by Dimitry Krotov and John J. Hopfield is illustrated a unsupervised algorithm for training a neural network in an unsupervised fashion inspired by biological neural networks.
 As we know, biology has inspired neural networks since the first steps in this direction of machine learning, and biological neural networks and artificial neural network have structural similarity, that is to say both are formed by layers of neurons greatly connected by synapses.
 It should be noted that in most models of artificial neural networks these connections transmit information forward, while the human cortex for example presents backward, forward and lateral connection, whose functions are still to be fully understood.
 
@@ -352,9 +354,22 @@ This makes the procedure not fully unsupervised, however we still retain the adv
 
 \subsection{Training}
 
-The parameters of the network, corresponding to the scalars that compose the matrix, are trained using the gradient descent technique previously discussed, with a variation:
+The parameters of the network, corresponding to the scalars that compose the matrix, are trained using the gradient descent technique previously discussed, in which we process the 450,000 samples database in an "epoch".
 
-Processing the whole database at each step of training would be time consuming. Instead, using a technique known as \textit{stochastic} gradient descent, we take a subset of the database  (known as minibatch) and treat it as the whole database. Due to statistical fluctuations, the minibatch will obviously not be representative of the whole database: at a practical level, this means that the gradient we are calculating is not precisely in the direction of the actual gradient, the one that we would only get processing the whole database in a single minibatch. We are, however, trading a reasonable amount of precision for the possibility of processing way more batches that we would we able to if each batch was composed of the whole database, so in the end working in minibatches works in favor of our objective, that is reaching convergence to a set of trained weights able to make predictions on the testing database.
+There is, however a difference to the implementation described in the previous section:
+
+Processing the whole database at each step of training would be time consuming. Instead, using a technique known as \textit{stochastic} gradient descent, we take a subset of the database  (known as minibatch) and treat it as the whole database. Due to statistical fluctuations, the minibatch will obviously not be representative of the whole database: at a practical level, this means that the gradient we are calculating is not precisely in the direction of the actual gradient, the one that we would only get processing the whole database in a single minibatch.
+We are, however, trading a reasonable amount of precision for the possibility of processing way more batches that we would we able to if each batch was composed of the whole database, so in the end working in minibatches works in favor of our objective, that is reaching convergence to a set of trained weights able to make predictions on the testing database.
+In our case, the 450,000 samples training database was split in 45,000 minibatches of 100 samples randomly chosen among the training database.
+
+So each minibatch processed gives us an approximation of the direction in the space of weights; But for how long should we proceed in that direction before processing another minibatch and getting another direction?
+As usual, there is no universal answer; The one selected in this case is
+
+\begin{equation}
+	dW'=0.04\frac{dW}{max(|dW|)}\frac{epoch}{epochs}.
+\end{equation}
+
+Where $dW$ is the update to the weights $W$ before we apply this normalization, 
 
 The authors also sum up the characteristics of the algorithm  in four points:
 \begin{itemize}
