@@ -415,13 +415,28 @@ With
     \braket{\textbf{W,v}}_i = \sum_j W_{ij} |W_{ij}|^{p-2} v_j
 \end{equation}
 
-And $\tau_L$ is a time scale parameter,  $W_{ij}$ is the strength of the synapse connecting the i-th hidden neuron with the j-th input neuron, $h_i$ is the i-th hidden neuron, $R$ is the radius of the sphere at which the weights of the synapses of each hidden neuron will converge, $p$ is the Lebesgue norm exponent, $g(h_i)$ is a function that assumes value
+And $\tau_L$ is a time scale parameter,  $W_{ij}$ is the strength of the synapse connecting the i-th hidden neuron with the j-th input neuron, $h_i$ is the i-th hidden neuron, $R$ is the radius of the sphere at which the weights of the synapses of each hidden neuron will converge, $p$ is the Lebesgue norm exponent, $g(h_i)$ is a function discussed below.
+
+The first term in equation \ref{main} is a product of a function of the postsynaptic cell activity and of the presynaptic cell activity.
+The second term is responsible for the convergence to a sphere of radius $R$.
+To show this, let's simply consider the time derivative of the $p$ norm of the weight vector
+
+\begin{equation}
+	\frac{d}{dt} \braket{\textbf{W,W}} = p \braket{\textbf{W}, \frac{d}{dt}\textbf{W}}
+\end{equation}
+
+And substitute $dW/dt$ with equation \ref{main}
+
+\begin{equation}
+	p \braket{\textbf{W}, \frac{d}{dt}\textbf{W}} = pg(h_i)\braket{\textbf{W,v}}[R^p-\braket{\textbf{W,W}}]
+\end{equation}
+
+$g(h_i)$ equals
 \begin{itemize}
     \item $1$ if $h_i$ is the most-activated hidden neuron,
     \item $-\Delta$ if $h_i$ is the k-th most activated hidden neuron, where $\Delta$ and $k$ are parameters of the algorithm,
     \item and zero in all other cases.
 \end{itemize}
-
 
 As evaluating $g$ implies ranking all hidden neurons by activation, there's an implicit competition between patterns.
 The cases in which has value of one and a negative value correspond to Hebbian and anti-Hebbian learning respectively.
@@ -431,6 +446,7 @@ The cases in which has value of one and a negative value correspond to Hebbian a
 Computational complexity, or time complexity, is an estimation of the time it takes to run an algorithm, as a function of the size of the input.
 It is a quantity of great interest in machine learning, where computational resources are often the limiting boundaries of theoretical new learning procedures.
 It is commonly given in big O notation.
+
 In our particular case, computational complexity was expected to be O(N), where N is the number of epochs processed.
 Trying five different values of N gave a linear correlation coefficient of 0.99, thus confirming a computational complexity of O(N).
 
