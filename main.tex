@@ -394,6 +394,14 @@ This definition reduces to the euclidean norm when $p=2$.
 \caption{The structure of the model.}
 \end{figure}
 
+Where ReLU has been used as an activation function on the transformed data (see section "Neural Networks" of this chapter).
+
+Many paper have been written trying to reconnect neural networks with their original biological inspirations. In particular, the 1982 work by Bienenstock, Cooper and Munro is a well-known reference for this filed, and a major inspiration for the Krotov and Hopfield 2019 paper. This algorithm focuses on two aspects of biological plausibility:
+\begin{itemize}
+	\item There is a phase of unsupervised learning, which we use to preprocess the data for the supervised algorithm.
+	\item The rule of evolution of a single synapse is local in the sense that it only involves information regarding the two neuron layers it connects.
+\end{itemize}
+
 The main equation of the algorithm is
 
 \begin{equation}
@@ -401,7 +409,7 @@ The main equation of the algorithm is
     \label{main}
 \end{equation}
 
-Where
+With
 
 \begin{equation}
     \braket{\textbf{W,v}}_i = \sum_j W_{ij} |W_{ij}|^{p-2} v_j
@@ -414,10 +422,16 @@ And $\tau_L$ is a time scale parameter,  $W_{ij}$ is the strength of the synapse
     \item and zero in all other cases.
 \end{itemize}
 
+
 As evaluating $g$ implies ranking all hidden neurons by activation, there's an implicit competition between patterns.
 The cases in which has value of one and a negative value correspond to Hebbian and anti-Hebbian learning respectively.
 
-Within regards to computational complexity, it was expected to be O(N) \todo[inline]{spiegare cosa sia la complessità computazionale}, where N is the number of epochs processed.
+\subsection{Computational complexity}
+
+Computational complexity, or time complexity, is an estimation of the time it takes to run an algorithm, as a function of the size of the input.
+It is a quantity of great interest in machine learning, where computational resources are often the limiting boundaries of theoretical new learning procedures.
+It is commonly given in big O notation.
+In our particular case, computational complexity was expected to be O(N), where N is the number of epochs processed.
 Trying five different values of N gave a linear correlation coefficient of 0.99, thus confirming a computational complexity of O(N).
 
 \subsection{Purpose of this paper}
