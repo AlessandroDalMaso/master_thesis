@@ -431,6 +431,8 @@ And substitute $dW/dt$ with equation \ref{main}
 	p \braket{\textbf{W}, \frac{d}{dt}\textbf{W}} = pg(h_i)\braket{\textbf{W,v}}[R^p-\braket{\textbf{W,W}}]
 \end{equation}
 
+As long as the terms outside the square brackets are positive, the norm of the weight vector decreases when it is bigger than $R$ and decreases when it is smaller than $R$. Practically, if the positivity constraint is only weakly violated, the convergence is still present.
+
 $g(h_i)$ equals
 \begin{itemize}
     \item $1$ if $h_i$ is the most-activated hidden neuron,
@@ -440,6 +442,8 @@ $g(h_i)$ equals
 
 As evaluating $g$ implies ranking all hidden neurons by activation, there's an implicit competition between patterns.
 The cases in which has value of one and a negative value correspond to Hebbian and anti-Hebbian learning respectively.
+
+Since $g$ is null for all but two neurons, only two neurons are updated for each minibatch.
 
 \subsection{Computational complexity}
 
