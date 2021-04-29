@@ -797,13 +797,13 @@ These, as well as the numerical results shown in the previous section are the re
     \centering
     \includegraphics [width=12cm ] {o/bar2.png}
     \caption{Statistical frequency of observed patterns, recorded over three different training runs. An example of \textit{Six-pointed} (SP) pattern can be found in image \ref{heatmap}, row 2, column 2, while an example of \textit{Chromosome} pattern can be found in row 5, column 9. A chi-square test has been performed, accepting the null hypothesis with $p =0.025$.}
-    \label{cerchio1}
+    \label{ii_hist}
 \end{figure}
 
 All patterns were visually identified by me. An attempt at getting an objective confirmation of these results was made suing cluster analysis (see chapter with the same name)
 
  Convergence to a sphere was not achieved:
-in the observed behaviour was that some weights would always remain above the range of convergence \todo[inline]{quale sarebbe questo range?}, no matter the number of epochs (see figure \ref{uu_hist}).
+in the observed behaviour was that some weights would always remain above the range of convergence, which corresponds to the parameter $R$ of equation \ref{main}, equal to 1. no matter the number of epochs (see figure \ref{uu_hist}).
 However it was achieved when anti Hebbian learning was turned off (see figure \ref{ii_hist})
 \begin{figure} [H]
     \centering
@@ -847,9 +847,11 @@ These figures appear to be consistent, reappearing unchanged at modifications of
 \begin{figure} [H]
 \centering
 \includegraphics [width=12cm ] {o/ii_hist.png}
-\caption{Histogram of the p-norms of weight vectors for each hidden neuron. Explicit anti-Hebbian learning is turned off. \todo[inline]{manca un commento nel testo}}
+\caption{Histogram of the p-norms of weight vectors for each hidden neuron. Explicit anti-Hebbian learning is turned off.}
 \label{ii_hist}
 \end{figure}
+
+We can see in figure \ref{ii_hist} that turning off explicit anti-hebbian learning assures convergence.
 
 \chapter{Behaviour of variants}
 
@@ -954,7 +956,12 @@ Examining the seemingly blank sets of synapses we can see (figure \ref{nearzero}
 
 \section{Multiple neurons reinforced}
 
-In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the k-th most activated neuron and is null in all other cases. \todo[inline]{spiegare meglio, non è chiaro}
+In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the k-th most activated neuron and is null in all other cases.
+
+
+
+
+ \todo[inline]{spiegare meglio, non è chiaro}
 
 \subsection{Accuracy of prediction}
 
