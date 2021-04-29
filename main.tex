@@ -780,7 +780,7 @@ These, as well as the numerical results shown in the previous section are the re
 \begin{itemize}
     \item If we confront the emerging patterns in figure \ref{heatmap} with some samples randomly extracted from the dataset (figure \ref{mnist}), We can see that the emerging patterns resemble quite well the original digits. However, they are not a simple copy. For instance, in some cases negative values are present, while the original samples are all positive. From a mathematical standpoint, this is due to anti-Hebbian learning, in which weights are pushed away from a specific pattern.
     \item Patterns are also significantly different from those emerging in backpropagation-based neural networks (\ref{backnet}).
-    \item All ten digits are present. There are other recurring patterns called "chromosome" and "six-pointed". Statistical frequencies are shown in graph \ref{cerchio1}. \todo[inline]{spiegare quali siano queste forme\ldots chi le ha definite, lei o hopfield?}
+    \item All ten digits are present. There are other recurring patterns called "chromosome" and "six-pointed". Statistical frequencies are shown in graph \ref{cerchio1}. These recurring patterns were identified by me.
     \item Some patterns did not converge to something recognizable. An example is the synapses in the third row, fifth column of figure \ref{heatmap}.
     \item many zeros appear to be bordered in negative (blue) values. No other negative-encircled digits were observed in three different runs aside from the six in figure \ref{heatmap}, fourth row, fifth column.
     \item A chi square test was performed, validating the hypothesis of all digits being equally represented with $p  = 0.025$.
@@ -789,16 +789,18 @@ These, as well as the numerical results shown in the previous section are the re
 \begin{figure} [H]
     \centering
     \includegraphics [width = 12cm] {h/backnet.png}
-    \caption{Emerging pattern in a backpropagation network. \todo[inline]{manca contesto, questi sono i risultati per la rete neurale anche in input?}}
+    \caption{Emerging pattern in a backpropagation network. \todo[inline]{manca contesto, questi sono i risultati per la rete neurale anche in input? (non ho capito)}}
     \label{backnet}
 \end{figure}
 
 \begin{figure} [H]
     \centering
     \includegraphics [width=12cm ] {o/bar2.png}
-    \caption{Statistical frequency of observed patterns \todo[inline]{ottenuti con che metodo?}, recorded over three different training runs. An example of \textit{Six-pointed} (SP) pattern can be found in image \ref{heatmap}, row 2, column 2, while an example of \textit{Chromosome} pattern can be found in row 5, column 9. A chi-square test has been performed, accepting the null hypothesis with $p =0.025$.}
+    \caption{Statistical frequency of observed patterns, recorded over three different training runs. An example of \textit{Six-pointed} (SP) pattern can be found in image \ref{heatmap}, row 2, column 2, while an example of \textit{Chromosome} pattern can be found in row 5, column 9. A chi-square test has been performed, accepting the null hypothesis with $p =0.025$.}
     \label{cerchio1}
 \end{figure}
+
+All patterns were visually identified by me. An attempt at getting an objective confirmation of these results was made suing cluster analysis (see chapter with the same name)
 
  Convergence to a sphere was not achieved:
 in the observed behaviour was that some weights would always remain above the range of convergence \todo[inline]{quale sarebbe questo range?}, no matter the number of epochs (see figure \ref{uu_hist}).
