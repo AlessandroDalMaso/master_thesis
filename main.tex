@@ -102,6 +102,7 @@ My re-implementation of the algorithm can be found at:
 \url{https://github.com/AlessandroDalMaso/Unsupervised\_hebbian\_learning}
 
 \todo[inline]{vanno aggiunte le referenze alle varie parte teoriche spiegate, non è possibile una tesi con 5 referenze in totale\ldots tutti i metodi di ML usati vanno citati, etc\ldots}
+\todo{figure 2.13 e 2.14 rifare le caption}
 \end{abstract}
 
 \tableofcontents
@@ -318,7 +319,7 @@ Which gives our final Backpropagation formula:
 \delta_j = h'(a_j)\sum_k w_{jk}\delta_k.
 \end{equation}
 
-\todo[inline]{spiegare anche che ci sono problemi di convergenza numerica (nota: cioè?)}
+\todo[inline]{spiegare anche che ci sono problemi di convergenza numerica (nota: cioè?) (vanishing gradient)}
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
 In a 2019 paper by Dimitry Krotov and John J. Hopfield is illustrated a unsupervised algorithm for training a neural network in an unsupervised fashion inspired by biological neural networks.
@@ -460,7 +461,7 @@ I reproduced the model, analyzing its behavior under various variations from the
 
 \subsection{Switching off explicit anti-Hebbian learning}
 
-In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}. \todo[inline]{fare riferimento a figure future è difficile da seguire (nota: l'alternativa è spostare questo paragrafo, diminuendo l'importanza di questa variante dell'algoritmo. dovrei farlo?)}
+In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}. \todo[inline]{fare riferimento a figure future è difficile da seguire (spostare questo paragrafo)}
 As one can imagine, this is not quite useful for classification:
 in these cases the classification score lowered to around 20\% in all supervised learning scenarios.
 
@@ -789,7 +790,7 @@ These, as well as the numerical results shown in the previous section are the re
 \begin{figure} [H]
     \centering
     \includegraphics [width = 12cm] {h/backnet.png}
-    \caption{Emerging pattern in a backpropagation network. \todo[inline]{manca contesto, questi sono i risultati per la rete neurale anche in input? (non ho capito)}}
+    \caption{Emerging pattern in a backpropagation network. \todo[inline]{manca contesto, questi sono i risultati per la rete neurale anche in input? (spiegare esattamente cosa stiamo vedendo, e che cosa deve trarre chi legge la mia tesi)}}
     \label{backnet}
 \end{figure}
 
@@ -884,7 +885,7 @@ for example the number 4 is handwritten either with a closed loop, as seen in th
 Such differences, and more subtle ones could be picked up by such a modification.
 The other modification, making use of "one-vs-one" batches (figure \ref{1v1}), is interesting for a different reason:
 It could lead to a better differentiation between each two digits, by confronting them through a single batch.
-\todo[inline]{var vedere i risultati in questo caso (ma non cambia nulla)}
+\todo[inline]{var vedere i risultati in questo caso (anche se sono gli stessi)}
 
 \section{Exponential decay over time}
 
@@ -904,7 +905,7 @@ In the first, modification, is added the decay term $-\epsilon W_i$ to the main 
     \tau_L \frac{dW_{ij}}{dt} = g(h_i)(R^p v_i - \braket{\textbf{W,v}}_i W_{ij} ) -\epsilon W_{ij}
 \end{equation}
 
-The value used for $\epsilon$ was 0.05. \todo[inline]{con altri valori che cosa si ottiene? (se metto anche i risultati, con quale criterio?) (nota per me: ho già l'illustrazione con 0.02)}
+The value used for $\epsilon$ was 0.05. \todo[inline]{con altri valori che cosa si ottiene? (giustificare il valore di 0.05) (nota per me: ho già l'illustrazione con 0.02)}
 
 \subsection{Accuracy of prediction}
 
@@ -1005,7 +1006,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 \subsection{Multiple neurons reinforced: visual observations}
 
 \begin{itemize}
-    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning. \todo[inline]{come cambiano i risultati con altri numeri di neuroni}
+    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning. \todo[inline]{come cambiano i risultati con altri numeri di neuroni (vedi nota precedente)}
     \item Confronting this with the convergence pattern of the original algorithm, but with anti-Hebbian learning switched off  (see figure \ref{nodelta}) We observe a close similarity, except for five patterns that did not fully converged to a prototype of a digit.
     \item However, some digits seem less precise, for example in figure \ref{multiple} first row seventh column.
 \end{itemize}
@@ -1017,7 +1018,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 Cluster analysis is a data classification technique that has the purpose of constructing clusters of samples that are internally homogeneous, but contain different types of samples.
 
 In this analysis agglomerative hierarchical clustering has been used.
-In this procedure,we start with a definition of distance between clusters.
+In this procedure, we start with a definition of distance between clusters.
 Typically, we start with a definition of distance between samples, and then we derive a definition of distance between clusters starting from that.
 
 For vector samples some common definitions of distance are:
@@ -1121,7 +1122,7 @@ The definition of distance between clusters is
 Where $a$ and $b$ are points belonging to set A and B respectively, and $d(a,b)$ is their euclidean distance.
 The definition of distance between clusters is the average of all between-clusters element distances.
 
-This definition proved to be the best out of others used \todo[inline]{come sono state valutate? facciamo vedere dei risultati quantitativi per i vari casi! (va bene che ad occhio ho aggiustato la distanza per tutte e 3 le definizioni?)}, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
+This definition proved to be the best out of others used \todo[inline]{come sono state valutate? facciamo vedere dei risultati quantitativi per i vari casi! (va bene che ad occhio ho aggiustato la distanza per tutte e 3 le definizioni?) (mettere i dendrogrammi e le tabelle.)}, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
 
 
 
@@ -1129,7 +1130,7 @@ This definition proved to be the best out of others used \todo[inline]{come sono
 
 
 With this definition, out of 18 clusters \todo[inline]{decisi come? perché 18 e non 17 o 19?}, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
-All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri ai cluster in modo da capire come si agglomerano (ma non ci sono già?)}
+All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri ai cluster in modo da capire come si agglomerano (ma non ci sono già?) (nel dendrogramma mettere nomi cluster)}
 
 \begin{figure} [H]
     \centering
@@ -1183,12 +1184,12 @@ All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri a
 
 \chapter{Conclusions}
 
-Considering first of all the results obtained in table \ref{bbb}, one must not be surprised that the results are much lower than those in the original paper by Hopfield and Krotov (in which a 1.46\% accuracy is reached \todo[inline]{sicuro del numero?}), as the number of both hidden neurons and processed epochs is much smaller (2000 hidden units and 1000 epochs vs 100 hidden units and 100 epochs), which greatly reduces both computational times and accuracy of prediction. \todo[inline]{sarebbe da far vedere un confronto corrispondente, non ha senso parlare dei risultati del paper (tolgo questo paragrafo? cosa posso mettere?)}
+Considering first of all the results obtained in table \ref{bbb}, one must not be surprised that the results are much lower than those in the original paper by Hopfield and Krotov (in which a 1.46\% accuracy is reached \todo[inline]{sicuro del numero?}), as the number of both hidden neurons and processed epochs is much smaller (2000 hidden units and 1000 epochs vs 100 hidden units and 100 epochs), which greatly reduces both computational times and accuracy of prediction. \todo[inline]{sarebbe da far vedere un confronto corrispondente, non ha senso parlare dei risultati del paper (tolgo questo paragrafo? cosa posso mettere?)(con cosa rimpiazzarlo)}
 
 The emerging patterns among synapses strength are of particular interest.
 Unlike in the case of more traditional, backpropagation based networks, they are interpretable by the human eye as similar to prototypes of the input samples, their utility goes beyond that.
 A common occurrence observed (see figure \ref{heatmap}) is a positive digit surrounded by a negative border, a common practice among human designed networks that reduces the possibility of confusion between digits.
-Another observed behaviour is a set of hidden neuron synapses in which it is possible to recognize two numbers:
+Another observed behavior is a set of hidden neuron synapses in which it is possible to recognize two numbers:
 one "drawn" in positive synapses strengths, and the other in negative.
 These values might reveal very useful in distinguishing between two classes of digits, as they respond with a positive activation for one digit and a negative one for the other.
 
