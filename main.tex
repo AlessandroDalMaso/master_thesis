@@ -1121,12 +1121,13 @@ The definition of distance between clusters is
 Where $a$ and $b$ are points belonging to set A and B respectively, and $d(a,b)$ is their euclidean distance.
 The definition of distance between clusters is the average of all between-clusters element distances.
 
-This definition proved to be the best out of others used \todo[inline]{come sono state valutate? facciamo vedere dei risultati quantitativi per i vari casi!}, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
+This definition proved to be the best out of others used \todo[inline]{come sono state valutate? facciamo vedere dei risultati quantitativi per i vari casi! (va bene che ad occhio ho aggiustato la distanza per tutte e 3 le definizioni?)}, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
 
 
 
 \section{Resulting clusters from 18-clusters agglomerative hierarchical clustering}
 
+\\
 With this definition, out of 18 clusters \todo[inline]{decisi come? perché 18 e non 17 o 19?}, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
 All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri ai cluster in modo da capire come si agglomerano (ma non ci sono già?)}
 
@@ -1182,7 +1183,7 @@ All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri a
 
 \chapter{Conclusions}
 
-Considering first of all the results obtained in table \ref{bbb}, one must not be surprised that the results are much lower than those in the original paper by Hopfield and Krotov (in which a 1.46\% accuracy is reached \todo[inline]{sicuro del numero?}), as the number of both hidden neurons and processed epochs is much smaller (2000 hidden units and 1000 epochs vs 100 hidden units and 100 epochs), which greatly reduces both computational times and accuracy of prediction. \todo[inline]{sarebbe da far vedere un confronto corrispondente, non ha senso parlare dei risultati del paper}
+Considering first of all the results obtained in table \ref{bbb}, one must not be surprised that the results are much lower than those in the original paper by Hopfield and Krotov (in which a 1.46\% accuracy is reached \todo[inline]{sicuro del numero?}), as the number of both hidden neurons and processed epochs is much smaller (2000 hidden units and 1000 epochs vs 100 hidden units and 100 epochs), which greatly reduces both computational times and accuracy of prediction. \todo[inline]{sarebbe da far vedere un confronto corrispondente, non ha senso parlare dei risultati del paper (tolgo questo paragrafo? cosa posso mettere?)}
 
 The emerging patterns among synapses strength are of particular interest.
 Unlike in the case of more traditional, backpropagation based networks, they are interpretable by the human eye as similar to prototypes of the input samples, their utility goes beyond that.
