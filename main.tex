@@ -844,14 +844,15 @@ These figures appear to be consistent, reappearing unchanged at modifications of
     \caption{Statistical frequency of observed patterns, recorded over three different training runs. Anti-Hebbian learning is turned off. An example of this con be seen in figure \ref{nodelta}. A chi-square test has been performed, accepting the null hypothesis with $p  = 0.025$.}
     \label{o/cerchio2}
 \end{figure}
+
 \begin{figure} [H]
 \centering
 \includegraphics [width=12cm ] {o/ii_hist.png}
 \caption{Histogram of the p-norms of weight vectors for each hidden neuron. Explicit anti-Hebbian learning is turned off.}
-\label{ii_hist}
+\label{noh_hist}
 \end{figure}
 
-We can see in figure \ref{ii_hist} that turning off explicit anti-hebbian learning assures convergence.
+We can see in figure \ref{noh_hist} that turning off explicit anti-hebbian learning assures convergence.
 
 \chapter{Behaviour of variants}
 
@@ -883,7 +884,7 @@ for example the number 4 is handwritten either with a closed loop, as seen in th
 Such differences, and more subtle ones could be picked up by such a modification.
 The other modification, making use of "one-vs-one" batches (figure \ref{1v1}), is interesting for a different reason:
 It could lead to a better differentiation between each two digits, by confronting them through a single batch.
-\todo[inline]{var vedere i risultati in questo caso}
+\todo[inline]{var vedere i risultati in questo caso (ma non cambia nulla)}
 
 \section{Exponential decay over time}
 
@@ -903,7 +904,7 @@ In the first, modification, is added the decay term $-\epsilon W_i$ to the main 
     \tau_L \frac{dW_{ij}}{dt} = g(h_i)(R^p v_i - \braket{\textbf{W,v}}_i W_{ij} ) -\epsilon W_{ij}
 \end{equation}
 
-The value used for $\epsilon$ was 0.05. \todo[inline]{con altri valori che cosa si ottiene?}
+The value used for $\epsilon$ was 0.05. \todo[inline]{con altri valori che cosa si ottiene? (se metto anche i risultati, con quale criterio?) (nota per me: ho già l'illustrazione con 0.02)}
 
 \subsection{Accuracy of prediction}
 
@@ -956,12 +957,23 @@ Examining the seemingly blank sets of synapses we can see (figure \ref{nearzero}
 
 \section{Multiple neurons reinforced}
 
-In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the k-th most activated neuron and is null in all other cases.
+In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the (k+1)-th most activated neuron and is null in all other cases. the selected value for $k$ was 4.
 
 
 
+\begin{center}
+	\begin{tabular} {c|c}
+		\textbf{Neuron rank} & \textbf{Type of learning} \\
+		\hline
+		1 & Hebbian \\
+		2 & Hebbian \\
+		3 & Hebbian \\
+		4 & Hebbian \\
+		5 & Anti-hebbian \\
+		All other neurons & Null \\
+	\end{tabular}
+\end{center}
 
- \todo[inline]{spiegare meglio, non è chiaro}
 
 \subsection{Accuracy of prediction}
 
@@ -1005,14 +1017,33 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 Cluster analysis is a data classification technique that has the purpose of constructing clusters of samples that are internally homogeneous, but contain different types of samples.
 
 In this analysis agglomerative hierarchical clustering has been used.
-In this procedure, we have a definition of distance between samples that we use to get a definition of distance between clusters.
-We then start joining the samples and the resulting clusters, at each step joining the two clusters that are the closest, until we group all samples in one clusters.
+In this procedure,we start with a definition of distance between clusters.
+Typically, we start with a definition of distance between samples, and then we derive a definition of distance between clusters starting from that.
+
+For vector samples some common definitions of distance are:
+\begin{itemize}
+	\item Euclidean distance
+	\item Cosine distance, i.e. one minus the cosine of the angle between the vectors
+	\item Cityblock distance, i.e. $dist(\textbf{x,y}) = \sum_i |x_i-y_i|$, commonly used as an alternative to euclidean distance because it is less computationally expensive.
+\end{itemize}
+
+While some common definition for distance between clusters are (in the following examples, let $X$ and $Y$ be our clusters):
+
+\begin{itemize}
+	\item The minimum possible distance between two samples belonging one to $X$ and one to $Y$;
+	\item The maximum possible distance between two samples belonging one to $X$ and one to $Y$;
+	\item The average of all possible distances be between two samples belonging one to $X$ and one to $Y$;
+	\item Ward's method: the inner variance of the cluster resulting from the merge of $X$ and $Y$, given an euclidean definition of distance between single samples.
+\end{itemize}
+
+
+We then consider each sample as a cluster that contains only one sample, and join together the two closest clusters, repeating this last step until only one cluster remains.
 The results are displayed in a dendrogram, a type of graph that shows how the clusters are being made.
+Studying the dendrogram can reveal insightful information about "naturally" emerging clusters.
 
 For example, consider the set of all inhabited continent (In the seven-continents subdivision:
 North America, South America, Europe, Asia, Africa, Oceania, excluding Antarctica).
 To do agglomerative hierarchical cluster analysis on this set, we would need to define a distance between continents, for example the distance between their geometric centroids, an then to define a distance between clusters of continents, for example the average distance between all elements of each cluster.
-Human experience is vital in this as there's no objective best all case answer.
 Then we start by measuring the distances between all starting continents, and joining in a clusters the two closest.
 The final dendrogram might look like this:
 (figure \ref{conte})
@@ -1081,7 +1112,7 @@ This approach has the advantage that a slight misplacement in space of weights d
     \label{zero_three}
 \end{figure}
 
-The definition of distance \todo[inline]{fra cluster} is
+The definition of distance between clusters is
 
 \begin{equation}
     distance(A, B) = max(max_A(min_B(d(a,b))), max_B(min_A(d(a,b))))
@@ -1097,7 +1128,7 @@ This definition proved to be the best out of others used \todo[inline]{come sono
 \section{Resulting clusters from 18-clusters agglomerative hierarchical clustering}
 
 With this definition, out of 18 clusters \todo[inline]{decisi come? perché 18 e non 17 o 19?}, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
-All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri ai cluster in modo da capire come si agglomerano}
+All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri ai cluster in modo da capire come si agglomerano (ma non ci sono già?)}
 
 \begin{figure} [H]
     \centering
