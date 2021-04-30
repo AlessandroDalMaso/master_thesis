@@ -816,14 +816,14 @@ However it was achieved when anti Hebbian learning was turned off (see figure \r
 \begin{figure} [H]
     \centering
     \includegraphics [width=12cm ] {h/nove.png}
-    \caption{The pattern of convergence observed in 20\% of runs.}
+    \caption{The pattern of convergence observed in 20\% of runs. One single neuron consistently scored first on the ranking and as such underwent hebbian learning, while all the other neurons underwent anti-hebbian learning, and converged to the same pattern: a mixture of all ten digits.}
     \label{nove}
 \end{figure}
 
 \begin{figure} [H]
     \centering
     \includegraphics [width=12cm ] {h/nodelta.png}
-    \caption{The pattern of convergence when explicit anti-Hebbian learning is turned off.}
+    \caption{The pattern of convergence when explicit anti-Hebbian learning is turned off. Synapses strengths are now recognizably prototypes of digits. Despite being initialized by random extraction from a Gaussian curve with a null mean, the weights are all either positive or close to zero.}
     \label{nodelta}
 \end{figure}
 
@@ -853,7 +853,7 @@ These figures appear to be consistent, reappearing unchanged at modifications of
 \label{noh_hist}
 \end{figure}
 
-We can see in figure \ref{noh_hist} that turning off explicit anti-hebbian learning assures convergence.
+We can see in figure \ref{noh_hist} that turning off explicit anti-Hebbian learning assures convergence.
 
 \chapter{Behaviour of variants}
 
