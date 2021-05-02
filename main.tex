@@ -109,6 +109,7 @@ My re-implementation of the algorithm can be found at:
 \listoftodos
 
 \chapter{Introduction}
+
 \section{Classification}
 The problem of classification has been studied since the beginnings of the field of study of pattern recognition.
 It consists in finding a certain algorithm that allows a machine to classify a set of data among a certain number of classes.
@@ -123,7 +124,7 @@ In some cases, no set of classes is given:
 instead the task consist in separating the data among an \textit{a priori} unknown number of classes whose members share similar features \cite{bishop2006pattern}.
 Again, applications are widespread:
 from marketing algorithms to medical data, to finance.
-The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to humans \cite{magoulas1999machine} \cite{ghoddusi2019machine}.
+The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to humans \cite{magoulas1999machine}.
 
 \section{Machine learning}
 The field of machine learning studies algorithms that improve at a task through learning.
@@ -132,15 +133,15 @@ A starting algorithm is used to resolve a particular task, and its parameter are
 
 It is common to distinguish between two kinds of learning:
 supervised and unsupervised.
-A learning algorithm is said to be supervised if it is trained on a labelled data-set, i.e.
+A learning algorithm is said to be supervised if it is trained on a labeled data-set, i.e.
 a dataset in which at each sample is associated the desired output from the algorithm, and by confronting the response of the algorithm with the desired output, the parameters of the algorithm are adjusted accordingly.
-Data in which each sample is associated with the corresponding desired output is said to be "labelled".
+Data in which each sample is associated with the corresponding desired output is said to be labeled.
 An example would be an algorithm that reads human handwriting:
 given an input in the form of images of handwritten characters, and the corresponding correct character, to which we can compare the response of the algorithm and adjust the parameters accordingly.
 
 A learning algorithm is said to be unsupervised if no desired output is associated with the input (the data is said to be "unsupervised"), and the parameters are only adjusted based on the comparison between samples.
 An example would be that of classifying customers from an on-line service based on their shopping habits.
-Without knowing the number of groups in which is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behaviour.
+Without knowing the number of groups in which is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behavior \cite{bishop2006pattern}.
 
 \section{Neural Networks}
 One of the most common artificial intelligence algorithm model is the artificial neural network.
@@ -214,7 +215,7 @@ The final output layer would be composed of ten neurons, of winch only one would
 For example, we would like the final output value to be one for the correct digit, and zero for all the others.
 Note that we did not specified the number of neurons, as we do not know the number of features highlighted in any layer, nor we know what the optimal number of layer is.
 Typically, a case-by-case judgement must be made, depending on the task we need to solve;
-there is no global rule to define the number of neurons and layers.
+there is no global rule to define the number of neurons and layers \cite{bishop2006pattern}.
 
 Now let's discuss the problem of how effectively train the network so that its parameters have appropriate values.
 
@@ -317,13 +318,13 @@ Which gives our final Backpropagation formula:
 \begin{equation}
 \delta_j = h'(a_j)\sum_k w_{jk}\delta_k.
 \end{equation}
-
+\cite{bishop2006pattern}, \cite{hastie2001data}.
 \todo[inline]{spiegare anche che ci sono problemi di convergenza numerica (nota: cioè?) (vanishing gradient)}
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
 In a 2019 paper by Dimitry Krotov and John J. Hopfield is illustrated a unsupervised algorithm for training a neural network in an unsupervised fashion inspired by biological neural networks.
 As we know, biology has inspired neural networks since the first steps in this direction of machine learning, and biological neural networks and artificial neural network have structural similarity, that is to say both are formed by layers of neurons greatly connected by synapses.
-It should be noted that in most models of artificial neural networks these connections transmit information forward, while the human cortex for example presents backward, forward and lateral connection, whose functions are still to be fully understood.
+It should be noted that in most models of artificial neural networks these connections transmit information forward, while the human cortex for example presents backward, forward and lateral connection, whose functions are still to be fully understood \cite{bishop2006pattern}.
 
 The authors evidence two main biological implausibilities in artificial neural networks:
 backpropagation techniques and supervised learning.
@@ -332,7 +333,7 @@ backpropagation techniques and supervised learning.
 
 In the first months or years of their lives, newborn animals and humans central nervous system undergoes some type of long-type learning.
 This learning is believed to be mostly unsupervised:
-there are no labelled data and no specific task.
+there are no labelled data and no specific task \cite{krotov2019unsupervised}.
 To use an analogy by D. Krotov, supervised learning would be like like teaching to newborns with flashcards, which is, as one can imagine, not a good idea.
 
 \subsection{implausibility of backpropagation}
@@ -343,7 +344,7 @@ In multilayered networks, this means that in order to evaluate the infinitesimal
 The algorithm is said to be non-local, requiring information from all the above layers.
 In biological neural networks, by contrast the information available to a single synapse is only relative to the two cells it connects.
 So the biological process is "local" in the sense that a synapse can evolve in any arbitrarily complicated function of some parameters, but in the end those parameters must be only those relative to the two cells it connects.
-As we will see shortly, our algorithm is local in a less strict sense: in the sense that a synapse evolves only with the information of the layers it connects; no above layer information is used in its evolution.
+As we will see shortly, our algorithm is local in a less strict sense: in the sense that a synapse evolves only with the information of the layers it connects; no above layer information is used in its evolution \cite{krotov2019unsupervised}.
 
 \section{The algorithm}
 In a 2019 paper, Dimity Krotov and John J. Hopfield proposed a neural network model whose main characteristics are unsupervised learning and locality of information.
@@ -477,7 +478,7 @@ Another change observed is that now the weights actually converge to a sphere (f
 \section{The MNIST database}
 
 The Modified National Institute of Standards and Technology database is a set of images of handwritten digits. The images are grayscale-level, centered, size-normalized and have a resolution of 28 by 28 pixels images of handwritten digits.
-The digits were written by 500 writers, United States Census Bureau employees and US high school students.
+The digits were written by 500 writers, United States Census Bureau employees and US high school students \cite{MNISTweb}.
 
 \begin{figure} [H]
 	\centering
@@ -487,6 +488,7 @@ The digits were written by 500 writers, United States Census Bureau employees an
 \end{figure}
 
 The dataset is commonly used as a simple dataset for testing machine learning algorithms.
+
 \chapter{Accuracy and visual characterization}
 
 \section{Supervised phase}
@@ -1182,8 +1184,6 @@ All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri a
 \end{figure}
 
 \chapter{Conclusions}
-
-Considering first of all the results obtained in table \ref{bbb}, one must not be surprised that the results are much lower than those in the original paper by Hopfield and Krotov (in which a 1.46\% accuracy is reached \todo[inline]{sicuro del numero?}), as the number of both hidden neurons and processed epochs is much smaller (2000 hidden units and 1000 epochs vs 100 hidden units and 100 epochs), which greatly reduces both computational times and accuracy of prediction. \todo[inline]{sarebbe da far vedere un confronto corrispondente, non ha senso parlare dei risultati del paper (tolgo questo paragrafo? cosa posso mettere?)(con cosa rimpiazzarlo)}
 
 The emerging patterns among synapses strength are of particular interest.
 Unlike in the case of more traditional, backpropagation based networks, they are interpretable by the human eye as similar to prototypes of the input samples, their utility goes beyond that.
