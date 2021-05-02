@@ -333,13 +333,13 @@ backpropagation techniques and supervised learning.
 
 In the first months or years of their lives, newborn animals and humans central nervous system undergoes some type of long-type learning.
 This learning is believed to be mostly unsupervised:
-there are no labelled data and no specific task \cite{krotov2019unsupervised}.
+there are no labeled data and no specific task \cite{zou2008overview}.
 To use an analogy by D. Krotov, supervised learning would be like like teaching to newborns with flashcards, which is, as one can imagine, not a good idea.
 
 \subsection{implausibility of backpropagation}
 As we have seen in the backpropagation section, each $\delta$ can be calculated by the deltas of the previous layer, given that one knows all the weights and activation values.
 
-In multilayered networks, this means that in order to evaluate the infinitesimal evolution of a single network parameter one must know not only the current value of the weight and the activation of the two neurons connected by it, but also the activation value of all neurons in the layers above.
+In multilayered networks, this means that in order to evaluate the infinitesimal evolution of a single network parameter one must know not only the current value of the weight and the activation of the two neurons connected by it, but also the activation value of all neurons in the layers above \cite{zhang2017split}.
 
 The algorithm is said to be non-local, requiring information from all the above layers.
 In biological neural networks, by contrast the information available to a single synapse is only relative to the two cells it connects.
@@ -478,7 +478,7 @@ Another change observed is that now the weights actually converge to a sphere (f
 \section{The MNIST database}
 
 The Modified National Institute of Standards and Technology database is a set of images of handwritten digits. The images are grayscale-level, centered, size-normalized and have a resolution of 28 by 28 pixels images of handwritten digits.
-The digits were written by 500 writers, United States Census Bureau employees and US high school students \cite{MNISTweb}.
+The digits were written by 500 writers, United States Census Bureau employees and US high school students  \cite{MNISTweb}.
 
 \begin{figure} [H]
 	\centering
@@ -487,7 +487,7 @@ The digits were written by 500 writers, United States Census Bureau employees an
 	\label{mnist}
 \end{figure}
 
-The dataset is commonly used as a simple dataset for testing machine learning algorithms.
+The dataset is commonly used as a simple dataset for testing machine learning algorithms \cite{cohen2017emnist}.
 
 \chapter{Accuracy and visual characterization}
 
@@ -496,12 +496,12 @@ Accuracy is defined the percentage of correctly classified samples.
 It is, of course, not useful to test this quantification of our model's performance on the same database used to train our model.
 For this reason, the database has been split in two:
 a training database of 450,000 samples and a database for testing accuracy of 10,000 samples.
-The sizes in which to subdivide the original datasets are not fixed, but the general rule is that the bigger the training dataset is, the better the accuracy.
+The sizes in which to subdivide the original datasets are not fixed, but the general rule is that the bigger the training dataset is, the better the accuracy \cite{bishop2006pattern}.
 
 To actually classify samples, we used three different supervised algorithms, to test on the data transformed with the weight matrix trained with our algorithm.
 
 \subsection{Random forest}
-The random forest is a supervised machine learning method that is based on a set of random trees, a simpler classification method.
+The random forest is a supervised machine learning method that is based on a set of random trees, a simpler classification method \cite{breiman2001random}.
 
 \subsubsection{Decision trees}
  At its core, a decision tree is nothing more than a set of binary decisions based on data associated with the samples.
@@ -587,11 +587,12 @@ And now we evaluate the averaged Gini impurity
 So now we know that applying the split reduces the Gini impurity from 0.5 to 0.167.
 
 Getting back to the problem of actually building the decision tree, we first decide the best threshold for each numerical feature by calculating the Gini impurity for each value, then we build the tree starting with the feature that lowers the impurity the most.
-During our descent long the tree, if we ever find a node were subsequential splitting can only increase the Gini impurity, we stop there and make the node a leaf.
+During our descent long the tree, if we ever find a node were subsequential splitting can only increase the Gini impurity, we stop there and make the node a leaf \cite{breiman2001random}.
 
 \subsubsection{Building random forests}
 Random trees, while easy to build, interpret and implement, as a method for supervised learning are (sadly) hindered by the low accuracy that characterizes this method.
-By their own nature they are very sensible to outliers. The reason for this can be understood by looking at their hierarchical nature: a single split that is not very good propagates this error downstream.\todo[inline]{giustificare! citazioni, esempi, etc\ldots}
+By their own nature they are very sensible to outliers. The reason for this can be understood by looking at their hierarchical nature: a single split that is not very good propagates this error downstream.
+Another problem is that proceeding downstream the database becomes smaller and smaller, and the model is prone to overfitting to the data \cite{bramer2007avoiding}.
 
 Random forests are a method for adding flexibility to decision trees.
 A random forest is a set of decision trees in which classification is given by a majority vote from all trees.
@@ -599,7 +600,7 @@ To build a random forest, the first step is to perform bootstrap aggregating (or
 The second step is to build a decision tree from the bagged dataset, but with a difference:
 at each step in building the tree, only a subset of variables is considered.
 Then the process is repeated until we have a considerable number of trees, the random forest;
-The two expedients we have used in building the trees, using a bagged dataset and only considering a subset of variables at each step, allow us to have greater flexibility and less sensitivity to outliers.
+The two expedients we have used in building the trees, using a bagged dataset and only considering a subset of variables at each step, allow us to have greater flexibility and less sensitivity to outliers \cite{hastie2001data}.
 
 \begin{figure} [H]
 \centering
@@ -608,9 +609,12 @@ The two expedients we have used in building the trees, using a bagged dataset an
 \label{forest}
 \end{figure}
 
+
+
 \subsection{Support vector machines}
 
-The second method used for the supervised learning of the algorithm, the Support vector Machine or SVM, a common and robust method for classification.
+The second method used for the supervised learning of the algorithm, the Support vector Machine or SVM, a common and robust method for classification
+\cite{gunn1998support}.
 
 Suppose that our training database is composed of data that is separable by a hyperplane in the space of features.
 
