@@ -121,7 +121,7 @@ For a long time, human capabilities in this field vastly surpassed those of auto
 In tackling this problem, we open the possibility of many more applications that traditionally were not thought as  tasks for computers \cite{marx2013big}.
 
 In some cases, no set of classes is given:
-instead the task consist in separating the data among an \textit{a priori} unknown number of classes whose members share similar features \cite{bishop2006pattern}.
+instead the task consist in separating the data among an \textit{a priori} unknown number of classes whose members share similar features.
 Again, applications are widespread:
 from marketing algorithms to medical data, to finance.
 The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to humans \cite{magoulas1999machine}.
@@ -337,7 +337,7 @@ there are no labelled data and no specific task \cite{krotov2019unsupervised}.
 To use an analogy by D. Krotov, supervised learning would be like like teaching to newborns with flashcards, which is, as one can imagine, not a good idea.
 
 \subsection{implausibility of backpropagation}
-As we have seen in the backpropagation section, each $\delta$ can be calculated by the deltas of the previous layer, given that one knows all the weights and activations.
+As we have seen in the backpropagation section, each $\delta$ can be calculated by the deltas of the previous layer, given that one knows all the weights and activation values.
 
 In multilayered networks, this means that in order to evaluate the infinitesimal evolution of a single network parameter one must know not only the current value of the weight and the activation of the two neurons connected by it, but also the activation value of all neurons in the layers above.
 
