@@ -236,7 +236,7 @@ This is obtained thought a technique known as gradient descent.
 In gradient descent we calculate the gradient of the loss function, then we take consecutive steps in the opposite direction of the gradient until we find the minimum of the loss function.
 The steps are typically taken smaller and smaller to increase precision.
 
-Within the context of machine learning, the gradient is calculated by processing a database, the training database. The act of processing the database and updating the parameters of the model is referred to as an "epoch".
+Within the context of machine learning, the gradient is calculated by processing a database, the training database. The act of processing the database and updating the parameters of the model is referred to as an "epoch" \cite{spall2005introduction}.
 
 \begin{figure}[H]
 \centering
@@ -323,7 +323,7 @@ Which gives our final Backpropagation formula:
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
 In a 2019 paper by Dimitry Krotov and John J. Hopfield is illustrated a unsupervised algorithm for training a neural network in an unsupervised fashion inspired by biological neural networks.
-As we know, biology has inspired neural networks since the first steps in this direction of machine learning, and biological neural networks and artificial neural network have structural similarity, that is to say both are formed by layers of neurons greatly connected by synapses.
+As we know, biology has inspired neural networks since the first steps in this direction of machine learning, and biological neural networks and artificial neural network have structural similarity, that is to say both are formed by layers of neurons greatly connected by synapses \cite{mcculloch1943logical}.
 It should be noted that in most models of artificial neural networks these connections transmit information forward, while the human cortex for example presents backward, forward and lateral connection, whose functions are still to be fully understood \cite{bishop2006pattern}.
 
 The authors evidence two main biological implausibilities in artificial neural networks:
@@ -339,15 +339,15 @@ To use an analogy by D. Krotov, supervised learning would be like like teaching 
 \subsection{implausibility of backpropagation}
 As we have seen in the backpropagation section, each $\delta$ can be calculated by the deltas of the previous layer, given that one knows all the weights and activation values.
 
-In multilayered networks, this means that in order to evaluate the infinitesimal evolution of a single network parameter one must know not only the current value of the weight and the activation of the two neurons connected by it, but also the activation value of all neurons in the layers above \cite{zhang2017split}.
+In multilayered networks, this means that in order to evaluate the infinitesimal evolution of a single network parameter one must know not only the current value of the weight and the activation of the two neurons connected by it, but also the activation value of all neurons in the layers above.
 
 The algorithm is said to be non-local, requiring information from all the above layers.
 In biological neural networks, by contrast the information available to a single synapse is only relative to the two cells it connects.
 So the biological process is "local" in the sense that a synapse can evolve in any arbitrarily complicated function of some parameters, but in the end those parameters must be only those relative to the two cells it connects.
-As we will see shortly, our algorithm is local in a less strict sense: in the sense that a synapse evolves only with the information of the layers it connects; no above layer information is used in its evolution \cite{krotov2019unsupervised}.
+As we will see shortly, our algorithm is local in a less strict sense: in the sense that a synapse evolves only with the information of the layers it connects; no above layer information is used in its evolution  \cite{zhang2017split}.
 
 \section{The algorithm}
-In a 2019 paper, Dimity Krotov and John J. Hopfield proposed a neural network model whose main characteristics are unsupervised learning and locality of information.
+In a 2019 paper \cite{krotov2019unsupervised}, Dimity Krotov and John J. Hopfield proposed a neural network model whose main characteristics are unsupervised learning and locality of information.
 
 The basic idea of the algorithm is to train a matrix of weights in a two layers network -in which one of the layers is our input layer.
 Then the so trained matrix is used to transform the data, that is then meant to be classified with a supervised algorithm of some kind.
@@ -637,7 +637,7 @@ The problem is of course to find the right parameters to correctly place the hyp
 
 
 Our first approximation is to choose the plane so that it is equidistant from the two closest samples from each class.
-This allows us to maximise the margin of space between every class and the hyperplane, which intuitively should in turn minimize misclassification.
+This allows us to maximize the margin of space between every class and the hyperplane, which intuitively should in turn minimize misclassification.
 For this reason, this technique is known as maximal margin classifier, while the points on the edge of the margin are called support vectors, from which support vector machine take name.
 
 \begin{figure} [H]
@@ -1020,11 +1020,11 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 
 \section{Theoretical introduction}
 
-Cluster analysis is a data classification technique that has the purpose of constructing clusters of samples that are internally homogeneous, but contain different types of samples.
+Cluster analysis is a data classification technique that has the purpose of constructing clusters of samples that are internally homogeneous, but contain different types of samples \cite{romesburg2004cluster}.
 
 In this analysis agglomerative hierarchical clustering has been used.
 In this procedure, we start with a definition of distance between clusters.
-Typically, we start with a definition of distance between samples, and then we derive a definition of distance between clusters starting from that.
+Typically, we start with a definition of distance between samples, and then we derive a definition of distance between clusters starting from that \cite{day1984efficient}.
 
 For vector samples some common definitions of distance are:
 \begin{itemize}
@@ -1042,6 +1042,7 @@ While some common definition for distance between clusters are (in the following
 	\item Ward's method: the inner variance of the cluster resulting from the merge of $X$ and $Y$, given an euclidean definition of distance between single samples.
 \end{itemize}
 
+\cite{CLUSTER}, \cite{rokach2005clustering}.
 
 We then consider each sample as a cluster that contains only one sample, and join together the two closest clusters, repeating this last step until only one cluster remains.
 The results are displayed in a dendrogram, a type of graph that shows how the clusters are being made.
