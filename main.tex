@@ -101,7 +101,6 @@ My re-implementation of the algorithm can be found at:
 
 \url{https://github.com/AlessandroDalMaso/Unsupervised\_hebbian\_learning}
 
-\todo[inline]{vanno aggiunte le referenze alle varie parte teoriche spiegate, non è possibile una tesi con 5 referenze in totale\ldots tutti i metodi di ML usati vanno citati, etc\ldots}
 \end{abstract}
 
 \tableofcontents
@@ -319,7 +318,14 @@ Which gives our final Backpropagation formula:
 \delta_j = h'(a_j)\sum_k w_{jk}\delta_k.
 \end{equation}
 \cite{bishop2006pattern}, \cite{hastie2001data}.
-\todo[inline]{spiegare anche che ci sono problemi di convergenza numerica (nota: cioè?) (vanishing gradient)}
+
+A problem emerging in backpropagation techniques is the vanishing gradient problem \cite{hochreiter1998vanishing}.
+
+It occurs in deep networks (that is, networks composed of many layers), when we use activation functions that map the real number range to a finite domain, like the sigmoid activation function.
+Since the gradient of such functions is very small, and the variation of an early-layer neuron is proportional to the multiplication of these quantities, the gradient becomes so small that the number of epochs needed to reach convergence is unfeasible.
+
+The opposite problem can happen when the derivatives involved are very large: their product becomes so large that at each epoch the weights move further and further away from the convergence point.
+
 \section{Biological plausibility of neural networks}
 While a majority of papers on neural network in present-day literature are about supervised learning, a minority of articles exist referring to unsupervised learning.
 In a 2019 paper by Dimitry Krotov and John J. Hopfield is illustrated a unsupervised algorithm for training a neural network in an unsupervised fashion inspired by biological neural networks.
