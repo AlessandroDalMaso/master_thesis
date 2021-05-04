@@ -785,7 +785,8 @@ These, as well as the numerical results shown in the previous section are the re
 \begin{figure} [H]
     \centering
     \includegraphics [width = 12cm] {h/backnet.png}
-    \caption{The weights of a network with the same structure, but trained witha backpropagation algorithm instead. Just like in figure \ref{heatmap}, each 28 by 28 subsquare represents one row of the matrix. Some structures are clearly recognizable, but there is no similarity to the original inputs.}
+    \caption{The weights of a network with the same structure, but trained witha backpropagation algorithm instead. Just like in figure \ref{heatmap}, each 28 by 28 subsquare represents one row of the matrix.
+    Some structures are clearly recognizable, but there is no similarity to the original inputs.}
     \label{backnet}
 \end{figure}
 
@@ -916,7 +917,8 @@ In the first, modification, is added the decay term $-\epsilon W_i$ to the main 
     \tau_L \frac{dW_{ij}}{dt} = g(h_i)(R^p v_i - \braket{\textbf{W,v}}_i W_{ij} ) -\epsilon W_{ij}
 \end{equation}
 
-The value used for $\epsilon$ was 0.05. \todo[inline]{con altri valori che cosa si ottiene? (giustificare il valore di 0.05) (nota per me: ho già l'illustrazione con 0.02)}
+Starting from zero and increasing  $\epsilon$ we observe more and more white sets of neurons in the visual representation of patterns, like in figure \ref{decay}.
+The value used for  was 0.05. 
 
 \subsection{Accuracy of prediction}
 
@@ -1061,8 +1063,6 @@ Then we start by measuring the distances between all starting continents, and jo
 The final dendrogram might look like this:
 (figure \ref{conte})
 
-\todo[inline]{non è chiara la spiegazione. dettagliare meglio come funzioni il clustering agglomerativo; spiegare anche i criteri di agglomerazione fra cluster e le distanze più comuni.}
-
 \begin{figure} [H]
 \centering
 \includegraphics [width=0.7\textwidth] {o/continents.png}
@@ -1142,7 +1142,7 @@ This definition proved to be the best out of others used \todo[inline]{come sono
 
 
 With this definition, out of 18 clusters \todo[inline]{decisi come? perché 18 e non 17 o 19?}, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
-All clusters can be visualized in the appendix. \todo[inline]{mettere i numeri ai cluster in modo da capire come si agglomerano (ma non ci sono già?) (nel dendrogramma mettere nomi cluster)}
+All clusters can be visualized in the appendix.
 
 \begin{figure} [H]
     \centering
