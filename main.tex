@@ -465,22 +465,6 @@ Trying five different values of N gave a linear correlation coefficient of 0.99,
 
 I reproduced the model, analyzing its behavior under various variations from the original, quantifying its prediction accuracy working on the MNIST handwritten digits database in conjunction with three different supervised algorithms used for classification purposes.
 
-\subsection{Switching off explicit anti-Hebbian learning}
-
-In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}. \todo[inline]{fare riferimento a figure future è difficile da seguire (spostare questo paragrafo)}
-As one can imagine, this is not quite useful for classification:
-in these cases the classification score lowered to around 20\% in all supervised learning scenarios.
-
-A theoretical explanation can be attempted in terms of insufficient differentiation of initial synapses values, and this is confirmed by the fact that reducing the standard deviation makes this result consistent.
-A single hidden neuron, the one that has only positive value at convergence, in the upper right corner of this image, is chosen as the most activated in a majority of cases, resulting in all the other neurons synapses values getting lowered.
-
-To avoid this, a variation from the original algorithm has been implemented, switching off the negative reinforcement, and only keeping the positive reinforcement learning.
-Note that this still maintains a form of competition between neurons, as only the most activated one gets updated at all.
-
-Now the weights are only positive and strictly resemble prototypes of digits (figure \ref{nodelta}).
-The accuracy of prediction is only minimally changed.
-Another change observed is that now the weights actually converge to a sphere (figures \ref{uu_hist} and \ref{ii_hist})
-
 \section{The MNIST database}
 
 The Modified National Institute of Standards and Technology database is a set of images of handwritten digits. The images are grayscale-level, centered, size-normalized and have a resolution of 28 by 28 pixels images of handwritten digits.
@@ -838,12 +822,30 @@ However it was achieved when anti Hebbian learning was turned off (see figure \r
     \label{nodelta}
 \end{figure}
 
+\chapter{Behaviour of variants}
+
+\section{Switching off explicit anti-Hebbian learning}
+
+In about 20\% of cases the algorithm was observed converging to the pattern shown in figure \ref{nove}.
+As one can imagine, this is not quite useful for classification:
+in these cases the classification score lowered to around 20\% in all supervised learning scenarios.
+
+A theoretical explanation can be attempted in terms of insufficient differentiation of initial synapses values, and this is confirmed by the fact that reducing the standard deviation makes this result consistent.
+A single hidden neuron, the one that has only positive value at convergence, in the upper right corner of this image, is chosen as the most activated in a majority of cases, resulting in all the other neurons synapses values getting lowered.
+
+To avoid this, a variation from the original algorithm has been implemented, switching off the negative reinforcement, and only keeping the positive reinforcement learning.
+Note that this still maintains a form of competition between neurons, as only the most activated one gets updated at all.
+
+Now the weights are only positive and strictly resemble prototypes of digits (figure \ref{nodelta}).
+The accuracy of prediction is only minimally changed.
+Another change observed is that now the weights actually converge to a sphere (figures \ref{uu_hist} and \ref{ii_hist})
+
 \subsection{Anti-Hebbian learning turned off: Observations}
 
 \begin{itemize}
-    \item Now all sets of synapses resemble prototypes of digits.
-    \item A chi square test was performed, validating the hypothesis of all digits being equally represented with $p  = 0.025$.
-    \item All weights are positive, as expected since values can only go up during learning.
+	\item Now all sets of synapses resemble prototypes of digits.
+	\item A chi square test was performed, validating the hypothesis of all digits being equally represented with $p  = 0.025$.
+	\item All weights are positive, as expected since values can only go up during learning.
 \end{itemize}
 
 In the original paper by Hopfield and Krotov this modification is tested, giving slight worse prediction results.
@@ -851,22 +853,20 @@ While the prediction results were only minimally changed in our implementation o
 These figures appear to be consistent, reappearing unchanged at modifications of various parameters of the algorithm, and are also very similar to the ones appearing in the "Exponential decay over time modification" and "Multiple neurons reinforced" modification (see sections with the same names in the chapter "Behaviour of variants", and in particular figures \ref{decay} and \ref{multiple}).
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=12cm ] {o/bar1.png}
-    \caption{Statistical frequency of observed patterns, recorded over three different training runs. Anti-Hebbian learning is turned off. An example of this con be seen in figure \ref{nodelta}. A chi-square test has been performed, accepting the null hypothesis with $p  = 0.025$.}
-    \label{o/cerchio2}
+	\centering
+	\includegraphics [width=12cm ] {o/bar1.png}
+	\caption{Statistical frequency of observed patterns, recorded over three different training runs. Anti-Hebbian learning is turned off. An example of this con be seen in figure \ref{nodelta}. A chi-square test has been performed, accepting the null hypothesis with $p  = 0.025$.}
+	\label{o/cerchio2}
 \end{figure}
 
 \begin{figure} [H]
-\centering
-\includegraphics [width=12cm ] {o/ii_hist.png}
-\caption{Histogram of the p-norms of weight vectors for each hidden neuron. Explicit anti-Hebbian learning is turned off.}
-\label{noh_hist}
+	\centering
+	\includegraphics [width=12cm ] {o/ii_hist.png}
+	\caption{Histogram of the p-norms of weight vectors for each hidden neuron. Explicit anti-Hebbian learning is turned off.}
+	\label{noh_hist}
 \end{figure}
 
 We can see in figure \ref{noh_hist} that turning off explicit anti-Hebbian learning assures convergence.
-
-\chapter{Behaviour of variants}
 
 \section{Different batch compositions}
 
