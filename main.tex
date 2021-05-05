@@ -776,7 +776,7 @@ These, as well as the numerical results shown in the previous section are the re
 \begin{itemize}
     \item If we confront the emerging patterns in figure \ref{heatmap} with some samples randomly extracted from the dataset (figure \ref{mnist}), We can see that the emerging patterns resemble quite well the original digits. However, they are not a simple copy. For instance, in some cases negative values are present, while the original samples are all positive. From a mathematical standpoint, this is due to anti-Hebbian learning, in which weights are pushed away from a specific pattern.
     \item Patterns are also significantly different from those emerging in backpropagation-based neural networks (\ref{backnet}).
-    \item All ten digits are present. There are other recurring patterns called "chromosome" and "six-pointed". Statistical frequencies are shown in graph \ref{cerchio1}. These recurring patterns were identified by me.
+    \item All ten digits are present. There are other recurring patterns called "chromosome" and "six-pointed". Statistical frequencies are shown in graph \ref{ii_hist}. These recurring patterns were identified by me.
     \item Some patterns did not converge to something recognizable. An example is the synapses in the third row, fifth column of figure \ref{heatmap}.
     \item many zeros appear to be bordered in negative (blue) values. No other negative-encircled digits were observed in three different runs aside from the six in figure \ref{heatmap}, fourth row, fifth column.
     \item A chi square test was performed, validating the hypothesis of all digits being equally represented with $p  = 0.025$.
@@ -877,6 +877,8 @@ one in which the single batches were formed of only one digit, (figure \ref{mono
 
 While this was expected to produce different patterns in synapses, both the patterns and the prediction accuracy did not change significantly.
 
+\todo{add accuracy and figures for both batch composition variants}
+
 \begin{figure} [H]
     \centering
     \includegraphics [width=10cm ] {o/0.png}
@@ -897,7 +899,6 @@ for example the number 4 is handwritten either with a closed loop, as seen in th
 Such differences, and more subtle ones could be picked up by such a modification.
 The other modification, making use of "one-vs-one" batches (figure \ref{1v1}), is interesting for a different reason:
 It could lead to a better differentiation between each two digits, by confronting them through a single batch.
-\todo[inline]{var vedere i risultati in questo caso (anche se sono gli stessi)}
 
 \section{Exponential decay over time}
 
@@ -917,8 +918,9 @@ In the first, modification, is added the decay term $-\epsilon W_i$ to the main 
     \tau_L \frac{dW_{ij}}{dt} = g(h_i)(R^p v_i - \braket{\textbf{W,v}}_i W_{ij} ) -\epsilon W_{ij}
 \end{equation}
 
-Starting from zero and increasing  $\epsilon$ we observe more and more white sets of neurons in the visual representation of patterns, like in figure \ref{decay}.
-The value used for  was 0.05. 
+Starting from zero and increasing  $\epsilon$ we observe more and more white sets of neurons in the visual representation of patterns, until about 90\% of patterns appear white at $\epsilon = 0.999$.
+
+The value used for the subsequent acuracy table and visual representation is 0.05. 
 
 \subsection{Accuracy of prediction}
 
@@ -952,8 +954,6 @@ Examining the seemingly blank sets of synapses we can see (figure \ref{nearzero}
 \caption{Visual representation of the learned weights, with exponential decay over time.}
 \label{decay}
 \end{figure}
-
-\subsection{Exponential decay over time: visual observations}
 
 \begin{itemize}
     \item The majority of patterns are significantly weakened by the exponential decay, which could explain the worse performance on classification. Those who did not undergo this effect are more similar to prototype of digits that those of the original model.
@@ -991,7 +991,7 @@ In the second BCM-inspired modification, more than one neuron undergoes Hebbian 
 
 \subsection{Accuracy of prediction}
 
-\begin{table}[hb!]
+\begin{table}[H]
   \begin{center}
     \begin{tabular}{c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
       \textbf{Method} & \textbf{Percentual score}\\
@@ -1016,10 +1016,10 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 \label{multiple}
 \end{figure}
 
-\subsection{Multiple neurons reinforced: visual observations}
+
 
 \begin{itemize}
-    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning. \todo[inline]{come cambiano i risultati con altri numeri di neuroni (vedi nota precedente)}
+    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning. \todo[inline]{come cambiano i risultati con altri numeri di neuroni (anche precedente)}
     \item Confronting this with the convergence pattern of the original algorithm, but with anti-Hebbian learning switched off  (see figure \ref{nodelta}) We observe a close similarity, except for five patterns that did not fully converged to a prototype of a digit.
     \item However, some digits seem less precise, for example in figure \ref{multiple} first row seventh column.
 \end{itemize}
@@ -1141,7 +1141,7 @@ This definition proved to be the best out of others used \todo[inline]{come sono
 \section{Resulting clusters from 18-clusters agglomerative hierarchical clustering}
 
 
-With this definition, out of 18 clusters \todo[inline]{decisi come? perché 18 e non 17 o 19?}, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
+With this definition, out of 18 clusters, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
 All clusters can be visualized in the appendix.
 
 \begin{figure} [H]
