@@ -479,7 +479,6 @@ The digits were written by 500 writers, United States Census Bureau employees an
 
 The dataset is commonly used as a simple dataset for testing machine learning algorithms \cite{cohen2017emnist}.
 
-\chapter{Accuracy and visual characterization}
 
 \section{Supervised phase}
 Accuracy is defined the percentage of correctly classified samples.
@@ -494,15 +493,15 @@ To actually classify samples, we used three different supervised algorithms, to 
 The random forest is a supervised machine learning method that is based on a set of random trees, a simpler classification method \cite{breiman2001random}.
 
 \subsubsection{Decision trees}
- At its core, a decision tree is nothing more than a set of binary decisions based on data associated with the samples.
+At its core, a decision tree is nothing more than a set of binary decisions based on data associated with the samples.
 The data can be both categorical (i.e.  it is a true of false affirmation) or numerical (i.e.  it has a value associated to it), in which case we make use of thresholds to turn use it as if it was categorical.
 (see figure \ref{chestt})
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=12cm] {o/chestt.png}
-    \caption{An example of a decision tree.}
-    \label{chestt}
+	\centering
+	\includegraphics [width=12cm] {o/chestt.png}
+	\caption{An example of a decision tree.}
+	\label{chestt}
 \end{figure}
 
 This is the basic structure of decision trees.
@@ -518,7 +517,7 @@ It is an indicator of how good a single feature is at classifying our data.
 The Gini impurity equals
 
 \begin{equation}
-    G = \sum_i p(C_i) \cdot (1 - p(C_i))
+	G = \sum_i p(C_i) \cdot (1 - p(C_i))
 \end{equation}
 
 Where $p(C_i)$ is the probability of a sample belonging to class $C_i$.
@@ -528,23 +527,23 @@ A feature that perfectly classifies the whole database has a Gini impurity of 0.
 For example, let's consider this toy database:
 
 \begin{table}[H]
-  \begin{center}
-    \begin{tabular}{c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-      \textbf{Blood pressure} & \textbf{Risk of hearth disease}\\
-      \hline
-      Patient 1 &  176 mmHg & High\\
-      Patient 2 &  168 mmHg & High\\
-      Patient 3 &  153 mmHg & High\\
-      Patient 4 &  145 mmHg & High\\
-      Patient 5 &  136 mmHg & Low\\
-      Patient 6 &  127 mmHg & High\\
-      Patient 7 &  125 mmHg & Low\\
-      Patient 8 &  119 mmHg & Low\\
-      Patient 9 &  118 mmHg & Low\\
-    \end{tabular}
-    \caption{Toy database: blood pressure and risk of hearth disease as evaluated by a medical professional.}
-    \label{tree_table}
-  \end{center}
+	\begin{center}
+		\begin{tabular}{c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+			\textbf{Blood pressure} & \textbf{Risk of hearth disease}\\
+			\hline
+			Patient 1 &  176 mmHg & High\\
+			Patient 2 &  168 mmHg & High\\
+			Patient 3 &  153 mmHg & High\\
+			Patient 4 &  145 mmHg & High\\
+			Patient 5 &  136 mmHg & Low\\
+			Patient 6 &  127 mmHg & High\\
+			Patient 7 &  125 mmHg & Low\\
+			Patient 8 &  119 mmHg & Low\\
+			Patient 9 &  118 mmHg & Low\\
+		\end{tabular}
+		\caption{Toy database: blood pressure and risk of hearth disease as evaluated by a medical professional.}
+		\label{tree_table}
+	\end{center}
 \end{table}
 
 
@@ -553,25 +552,25 @@ Given this database, how good is a blood pressure threshold at 140 mmhg at class
 Calculating the Gini impurity for the unsplit database gives us
 
 \begin{equation}
-    G = 0.5 \cdot 0.5 + (1-0.5) \cdot (1-0.5) = 0.5
+	G = 0.5 \cdot 0.5 + (1-0.5) \cdot (1-0.5) = 0.5
 \end{equation}
 
 Now let's split the database at our give threshold and calculate the Gini impurity for only patient with a blood pressure bigger than 140 mmHg
 
 \begin{equation}
-    G_{high} = 0 \cdot (1 -0) + 1 \cdot (1-1) = 0
+	G_{high} = 0 \cdot (1 -0) + 1 \cdot (1-1) = 0
 \end{equation}
 
 And for patients with a lower than 140 mmHg blood pressure
 
 \begin{equation}
-    G_{low} = \frac{1}{6} \cdot (1 - \frac{1}{6}) + \frac{5}{6} \cdot (1- \frac{5}{6}) = 0.278.
+	G_{low} = \frac{1}{6} \cdot (1 - \frac{1}{6}) + \frac{5}{6} \cdot (1- \frac{5}{6}) = 0.278.
 \end{equation}
 
 And now we evaluate the averaged Gini impurity
 
 \begin{equation}
-    G_{split} = \frac{4}{10} \cdot G_{high} + \frac{6}{10} \cdot G_{low} = 0.167
+	G_{split} = \frac{4}{10} \cdot G_{high} + \frac{6}{10} \cdot G_{low} = 0.167
 \end{equation}
 
 So now we know that applying the split reduces the Gini impurity from 0.5 to 0.167.
@@ -593,10 +592,10 @@ Then the process is repeated until we have a considerable number of trees, the r
 The two expedients we have used in building the trees, using a bagged dataset and only considering a subset of variables at each step, allow us to have greater flexibility and less sensitivity to outliers \cite{hastie2001data}.
 
 \begin{figure} [H]
-\centering
-\includegraphics [width=\textwidth ] {o/forest.png}
-\caption{An example of a random forest model composed by three trees.}
-\label{forest}
+	\centering
+	\includegraphics [width=\textwidth ] {o/forest.png}
+	\caption{An example of a random forest model composed by three trees.}
+	\label{forest}
 \end{figure}
 
 
@@ -611,7 +610,7 @@ Suppose that our training database is composed of data that is separable by a hy
 An hyperplane is a set of $\textbf{x}$ points satisfying
 
 \begin{equation}
-    \textbf{w}^T\textbf{x} -b = 0
+	\textbf{w}^T\textbf{x} -b = 0
 \end{equation}
 
 For a certain vector $\textbf{w}$ normal to the plane and for a certain scalar $b$, So that data on one side of the plane belongs to one class and data to the other side belongs to the other.
@@ -619,10 +618,10 @@ Note that we can easily generalize for multiclass problems reducing the to multi
 The problem is of course to find the right parameters to correctly place the hyperplane.
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=\textwidth ]{svm/1dim.png}
-    \caption{One-dimensional data samples divided in two classes.}
-    \label{1dim}
+	\centering
+	\includegraphics [width=\textwidth ]{svm/1dim.png}
+	\caption{One-dimensional data samples divided in two classes.}
+	\label{1dim}
 \end{figure}
 
 
@@ -631,10 +630,10 @@ This allows us to maximize the margin of space between every class and the hyper
 For this reason, this technique is known as maximal margin classifier, while the points on the edge of the margin are called support vectors, from which support vector machine take name.
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=\textwidth ]{svm/1dim_disq.png}
-    \caption{Picking a hyperplane equidistant from the two nearest points least to the biggest margins possible. With monodimensional data, a hyperplane corresponds to a single point.}
-    \label{1dim1_disq}
+	\centering
+	\includegraphics [width=\textwidth ]{svm/1dim_disq.png}
+	\caption{Picking a hyperplane equidistant from the two nearest points least to the biggest margins possible. With monodimensional data, a hyperplane corresponds to a single point.}
+	\label{1dim1_disq}
 \end{figure}
 
 However, this choice is far from the ideal one.
@@ -643,10 +642,10 @@ even just one outlier can create great imprecision (figure \ref{1dim_disq2})
 
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=\textwidth ]{svm/1dim_disq2.png}
-    \caption{A single outlier can greatly reduce the margin.}
-    \label{1dim_disq2}
+	\centering
+	\includegraphics [width=\textwidth ]{svm/1dim_disq2.png}
+	\caption{A single outlier can greatly reduce the margin.}
+	\label{1dim_disq2}
 \end{figure}
 
 In figure \ref{1dim_disq2}, one would classify any new samples on the left of the maximal margin as belonging to the class whose points are represented in violet, but intuitively we would like to assign the to the other class instead.
@@ -656,10 +655,10 @@ By allowing our model to misclassify samples in a certain number (figure \ref{1d
 A balance between these two characteristics must be found model by model.
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=\textwidth ]{svm/1dim_alw.png}
-    \caption{Allowing for a certain number of  misclassifications improves the model.}
-    \label{1dim_alw}
+	\centering
+	\includegraphics [width=\textwidth ]{svm/1dim_alw.png}
+	\caption{Allowing for a certain number of  misclassifications improves the model.}
+	\label{1dim_alw}
 \end{figure}
 
 Support vector machine can, of course, be generalized to non-linearly separable data:
@@ -670,17 +669,17 @@ Then the decision boundary will be a hyperplane in this higher dimensional space
 The transformation $x \xrightarrow{} (x, x^2, x^3, ...)$ is a common choice known as polynomial kernel transformation, but many more transformations can be useful depending on the data.
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=\textwidth ]{svm/1dim_ns.png}
-    \caption{Non linearly separable monodimensional data.}
-    \label{1dim_ns}
+	\centering
+	\includegraphics [width=\textwidth ]{svm/1dim_ns.png}
+	\caption{Non linearly separable monodimensional data.}
+	\label{1dim_ns}
 \end{figure}
 
 \begin{figure} [H]
-    \centering
-    \includegraphics [width=\textwidth ]{svm/2dim.png}
-    \caption{shifting the data to higher dimensions can make it linearly separable.}
-    \label{2dim}
+	\centering
+	\includegraphics [width=\textwidth ]{svm/2dim.png}
+	\caption{shifting the data to higher dimensions can make it linearly separable.}
+	\label{2dim}
 \end{figure}
 
 A key point to take into consideration is that adding new dimensions can rapidly make the computational costs infeasible: as one can imagine, when operating on realistic database the number of dimensions that one needs to add to make the data separable can be very big.
@@ -688,7 +687,7 @@ Fortunately, there is a way to operate the calculations needed without never act
 
 Let $\phi (x)$ be the function that transposes in higher dimension our samples $x$. It is possible to express the equation that allows us to calculate the best separation hyperplane $W$ only as a function of the matrix $K$:
 \begin{equation}
-K =
+	K =
 	\begin{bmatrix}
 		\phi (x_1) \phi(x_1)^T & \ldots & \phi (x_1) \phi(x_n)^T \\
 		\ldots                 & \ldots & \ldots \\
@@ -701,12 +700,12 @@ Where $\phi$ is the transformation in higher dimensions of our samples.
 Now, Mercer's theorem states that such a matrix, being symmetrical and positive semidefinite, can be expressed as a function of $x$ without explicitly calculating $\phi (x)$: 
 
 \begin{equation}
-K =
-\begin{bmatrix}
-	k(x_1, x_1) & \ldots & k(x_1, x_n) \\
-	\ldots                 & \ldots & \ldots \\
-	k(x_n, x_1) & \ldots & k(x_n, x_n)
-\end{bmatrix}
+	K =
+	\begin{bmatrix}
+		k(x_1, x_1) & \ldots & k(x_1, x_n) \\
+		\ldots                 & \ldots & \ldots \\
+		k(x_n, x_1) & \ldots & k(x_n, x_n)
+	\end{bmatrix}
 \end{equation}
 
 For example, consider this transformation from 2 to 3 dimensions:
@@ -726,6 +725,9 @@ Which is a particular case of a commonly used transformation, the polynomial ker
 \begin{equation}
 	K(\textbf{x},\textbf{y})(\textbf{x}\cdot{y}+c)^d
 \end{equation}
+
+
+\chapter{Accuracy and visual characterization}
 
 \section{Accuracy table}
 
