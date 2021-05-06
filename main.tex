@@ -694,11 +694,11 @@ Let $\phi (x)$ be the function that transposes in higher dimension our samples $
 		\ldots                 & \ldots & \ldots \\
 		\phi (x_n) \phi(x_1)^T & \ldots & \phi (x_n) \phi(x_n)^T
 	\end{bmatrix}
-\end{equation}	
+\end{equation}
 
 Where $\phi$ is the transformation in higher dimensions of our samples.
 
-Now, Mercer's theorem states that such a matrix, being symmetrical and positive semidefinite, can be expressed as a function of $x$ without explicitly calculating $\phi (x)$: 
+Now, Mercer's theorem states that such a matrix, being symmetrical and positive semidefinite, can be expressed as a function of $x$ without explicitly calculating $\phi (x)$:
 
 \begin{equation}
 	K =
@@ -953,7 +953,7 @@ In the first, modification, is added the decay term $-\epsilon W_i$ to the main 
 
 Starting from zero and increasing  $\epsilon$ we observe more and more white sets of neurons in the visual representation of patterns, until about 90\% of patterns appear white at $\epsilon = 0.999$.
 
-The value used for the subsequent acuracy table and visual representation is 0.05. 
+The value used for the subsequent acuracy table and visual representation is 0.05.
 
 \subsection{Accuracy of prediction}
 
@@ -1204,6 +1204,7 @@ All clusters can be visualized in the appendix.
 
 \begin{itemize}
     \item The only triple digit cluster (figure \ref{910}, on the left) is composed of eights, arguably the most complicated shape and thus the least separable from the others, fives and threes that share each part of the shape with eight, especially looking at the definition of distance we gave to the algorithm.
+        \todo[inline]{qual è il ruolo della sottofigura a destra? cita soltanto quella a sinistra}
 
 \begin{figure} [H]
     \centering
@@ -1261,6 +1262,7 @@ However, we can more easily recognize the digits prototypes.
 A characteristic of these positive patterns is also consistency, as they presented themselves in the two modifications of the model inspired to BCM learning, the one with exponential over-time decay of weights and the one with multiple neurons reinforced.
 Also, varying the hyperparameters of this model did not changed the existing pattern by a significant amount.
 We did not observe a significant change in accuracy either, however we know from the paper by Hopfield and Krotov that when working with their increased number of epochs and hidden neurons the difference is significative (switching off anti-Hebbian learning lowers the accuracy from 98.54\% to 97.98\%).
+\todo[inline]{mi manca un feeling di ``conclusione'' in questo testo. Che cosa possiamo sintetizzare dai suoi risulati? che prospettive future ci potrebbero essere? che altri esperimenti andrebbero fatti?}
 
 \chapter{Acknowledgements}
 This document is the culmination of five years of work.
