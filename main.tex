@@ -373,10 +373,11 @@ So each minibatch processed gives us an approximation of the direction in the sp
 As usual, there is no universal answer; The one selected in this case is
 
 \begin{equation}
-	dW'=0.04\frac{dW}{max(|dW|)}\frac{epoch}{epochs}.
+	dW'=\alpha \frac{dW}{max(|dW|)}\frac{epoch}{epochs}.
+	\label{learnrate}
 \end{equation}
 
-Where $dW$ is the update to the weights $W$ before we apply this normalization, and "epochs" is the total number of epochs used, 100.
+Where $\alpha=0.1$ is a scaling constant, $dW$ is the update to the weights $W$ before we apply this normalization, and "epochs" is the total number of epochs used, 100.
 
 The authors also sum up the characteristics of the algorithm  in four points:
 \begin{itemize}
@@ -877,9 +878,7 @@ Another point of interest in the study of the model proposed was modifying the s
 Two variations were used:
 one in which the single batches were formed of only one digit, (figure \ref{monotype}) and one in which the batches were formed of two types of digits only (figure \ref{1v1}).
 
-While this was expected to produce different patterns in synapses, both the patterns and the prediction accuracy did not change significantly.
-
-\todo{add accuracy and figures for both batch composition variants}
+\todo{approfondire?}
 
 \begin{figure} [H]
     \centering
@@ -901,6 +900,38 @@ for example the number 4 is handwritten either with a closed loop, as seen in th
 Such differences, and more subtle ones could be picked up by such a modification.
 The other modification, making use of "one-vs-one" batches (figure \ref{1v1}), is interesting for a different reason:
 It could lead to a better differentiation between each two digits, by confronting them through a single batch.
+
+A first observation made with these observations is that in both cases a patterns similar to the one shown in figure \ref{nove} becomes very common, appearing about 90\% of the time.
+
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=10cm] {h/nove_mono.png}
+	\caption{A pattern obtained with a "monotype" batch. (see figure \ref{monotype}). The final result is very similar to figure \ref{nove}.)}
+\end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=10cm] {h/nove_1v1.png}
+	\caption{A pattern obtained with a "one-vs-one" batch. (see figure \ref{1v1}). Again, he final result is very similar to figure \ref{nove}.)}
+\end{figure}
+
+In order to avoid this effect, the constant $\alpha$ in equation \ref{learnrate} has been lowered to $0.04$. The resulting heatmaps of weight are the subsequent:
+
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=10cm] {h/mono.png}
+	\caption{The pattern obtained with "monotype" batches (see figure \ref{monotype}) and lowering the learn rate to 0.04 (see equation \ref{learnrate}).}
+	\label{mono_004_heatmap}
+\end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=10cm] {h/1v1.png}
+	\caption{The pattern obtained with "one-vs-one" batches (see figure \ref{1v1}) and lowering the learn rate to 0.04 (see equation \ref{learnrate}).}
+	\label{1v1_004_heatmap}
+\end{figure}
+
+We can see that in both cases, there are less negative values (represented in blue in figures \ref{mono_004_heatmap} and \ref{1v1_004_heatmap}). "Chromosome" patterns are absent from the "one-vs-one" modification figure and much less frequent in the "monotype" modification that in the original algorithm.
 
 \section{Exponential decay over time}
 
@@ -1008,6 +1039,7 @@ In the second BCM-inspired modification, more than one neuron undergoes Hebbian 
 \end{table}
 
 Again, the algorithm performed worse with this modification (table \ref{4tab}).
+Resulting accuracy and visual characterization do not change altering the number of neurons undergoing hebbian learning, from 2 neurons to 5.
 
 \subsection{Visual characterization}
 
@@ -1021,7 +1053,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 
 
 \begin{itemize}
-    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning. \todo[inline]{come cambiano i risultati con altri numeri di neuroni (anche precedente)}
+    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning.
     \item Confronting this with the convergence pattern of the original algorithm, but with anti-Hebbian learning switched off  (see figure \ref{nodelta}) We observe a close similarity, except for five patterns that did not fully converged to a prototype of a digit.
     \item However, some digits seem less precise, for example in figure \ref{multiple} first row seventh column.
 \end{itemize}
@@ -1137,6 +1169,21 @@ Where $a$ and $b$ are points belonging to set A and B respectively, and $d(a,b)$
 The definition of distance between clusters is the average of all between-clusters element distances.
 
 This definition proved to be the best out of others used \todo[inline]{come sono state valutate? facciamo vedere dei risultati quantitativi per i vari casi! (va bene che ad occhio ho aggiustato la distanza per tutte e 3 le definizioni?) (mettere i dendrogrammi e le tabelle.)}, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
+
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{c|c|c|c}
+			Distance & One digit cluster frequency & Two digits clusters & Three digits clusters\\
+			\hline
+			 Hausdorff & 73\% & 22\% &  5\% \\
+			 Euclidean & 54\% & 23\% & 23\% \\
+			 Cosine    & 57\% &  8\% & 17\% \\
+		\end{tabular}
+	\end{center}
+\caption{Relative frequencies of cluster composed by various types of digits. Four or
+	 more digits clusters were never observed.}
+\end{table}
 
 
 
