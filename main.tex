@@ -1039,6 +1039,7 @@ In the second BCM-inspired modification, more than one neuron undergoes Hebbian 
 \end{table}
 
 Again, the algorithm performed worse with this modification (table \ref{4tab}).
+Resulting accuracy and visual characterization do not change altering the number of neurons undergoing hebbian learning, from 2 neurons to 5.
 
 \subsection{Visual characterization}
 
@@ -1052,7 +1053,7 @@ Again, the algorithm performed worse with this modification (table \ref{4tab}).
 
 
 \begin{itemize}
-    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning. \todo[inline]{come cambiano i risultati con altri numeri di neuroni (anche precedente)}
+    \item In this case, the Hebbian learning, now reinforcing the synapses of the four most activated neurons, almost fully compensated for the presence of anti-Hebbian learning.
     \item Confronting this with the convergence pattern of the original algorithm, but with anti-Hebbian learning switched off  (see figure \ref{nodelta}) We observe a close similarity, except for five patterns that did not fully converged to a prototype of a digit.
     \item However, some digits seem less precise, for example in figure \ref{multiple} first row seventh column.
 \end{itemize}
@@ -1168,6 +1169,21 @@ Where $a$ and $b$ are points belonging to set A and B respectively, and $d(a,b)$
 The definition of distance between clusters is the average of all between-clusters element distances.
 
 This definition proved to be the best out of others used \todo[inline]{come sono state valutate? facciamo vedere dei risultati quantitativi per i vari casi! (va bene che ad occhio ho aggiustato la distanza per tutte e 3 le definizioni?) (mettere i dendrogrammi e le tabelle.)}, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
+
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{c|c|c|c}
+			Distance & One digit cluster frequency & Two digits clusters & Three digits clusters\\
+			\hline
+			 Hausdorff & 73\% & 22\% &  5\% \\
+			 Euclidean & 54\% & 23\% & 23\% \\
+			 Cosine    & 57\% &  8\% & 17\% \\
+		\end{tabular}
+	\end{center}
+\caption{Relative frequencies of cluster composed by various types of digits. Four or
+	 more digits clusters were never observed.}
+\end{table}
 
 
 
