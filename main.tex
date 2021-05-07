@@ -878,8 +878,6 @@ Another point of interest in the study of the model proposed was modifying the s
 Two variations were used:
 one in which the single batches were formed of only one digit, (figure \ref{monotype}) and one in which the batches were formed of two types of digits only (figure \ref{1v1}).
 
-\todo{approfondire?}
-
 \begin{figure} [H]
     \centering
     \includegraphics [width=10cm ] {o/0.png}
@@ -1185,7 +1183,7 @@ This definition proved to be the best out of others used, as it permitted to sep
 	 more digits clusters were never observed.}
 \end{table}
 
-\todo[inline]{rifare co tutti a 18?}
+\todo[inline]{rifare con tutti a 18?}
 
 \section{Resulting clusters from 18-clusters agglomerative hierarchical clustering}
 
@@ -1203,12 +1201,11 @@ All clusters can be visualized in the appendix.
 \subsection{Observations on the resulting clusters}
 
 \begin{itemize}
-    \item The only triple digit cluster (figure \ref{910}, on the left) is composed of eights, arguably the most complicated shape and thus the least separable from the others, fives and threes that share each part of the shape with eight, especially looking at the definition of distance we gave to the algorithm.
-        \todo[inline]{qual è il ruolo della sottofigura a destra? cita soltanto quella a sinistra}
+    \item The only triple digit cluster (figure \ref{910}) is composed of eights, arguably the most complicated shape and thus the least separable from the others, fives and threes that share each part of the shape with eight, especially looking at the definition of distance we gave to the algorithm.
 
 \begin{figure} [H]
     \centering
-    \includegraphics [width=\textwidth ] {c/h/9.png}
+    \includegraphics [width=9.7cm] {c/h/9half.png}
     \caption{}
     \label{910}
 \end{figure}
@@ -1261,7 +1258,13 @@ We lose the negative border effect and the superimposition of two digits previou
 However, we can more easily recognize the digits prototypes.
 A characteristic of these positive patterns is also consistency, as they presented themselves in the two modifications of the model inspired to BCM learning, the one with exponential over-time decay of weights and the one with multiple neurons reinforced.
 Also, varying the hyperparameters of this model did not changed the existing pattern by a significant amount.
-We did not observe a significant change in accuracy either, however we know from the paper by Hopfield and Krotov that when working with their increased number of epochs and hidden neurons the difference is significative (switching off anti-Hebbian learning lowers the accuracy from 98.54\% to 97.98\%).
+We did not observe a significant change in accuracy either, however we know from the paper by Hopfield and Krotov that when working with their increased number of epochs and hidden neurons the difference is significant (switching off anti-Hebbian learning lowers the accuracy from 98.54\% to 97.98\%).
+This supervised method can be useful for obtaining more interpretable synapse patterns, that allow us to differentiate between two classes in particular, and study the natural classes that a database is divided into.
+
+An aspect of the algorithm not explored in this paper, that could be of interest, is its application in a deep neural network. The locality as defined in this paper, i.e. all information for the evolution of a single synapse is derived from the two layers it connects, would be a considerable conceptual change from backpropagation-based algorithms in "deep" (composed by many layers) neural networks.
+
+Aside from the algorithm itself, competition between neurons is a powerful technique that could inspire many algorithm in machine learning. As for biological plausibility, many more aspects of biological neural network are very different from our modeling in artificial neural networks, and could be an inspiration for future research.
+ 
 \todo[inline]{mi manca un feeling di ``conclusione'' in questo testo. Che cosa possiamo sintetizzare dai suoi risulati? che prospettive future ci potrebbero essere? che altri esperimenti andrebbero fatti?}
 
 \chapter{Acknowledgements}
