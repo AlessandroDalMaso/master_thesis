@@ -1166,24 +1166,28 @@ The definition of distance between clusters is
 Where $a$ and $b$ are points belonging to set A and B respectively, and $d(a,b)$ is their euclidean distance.
 The definition of distance between clusters is the average of all between-clusters element distances.
 
-This definition proved to be the best out of others used, as it permitted to separate the synapses in eighteen different clusters, mostly composed by only one digit.
+This definition proved to be the best out of others used, since stopping the agglomerative process at 18 clusters for all three definitions of distance still resulted in at least one cluster composed of only one digit, except for the Hausdorff definition of distance (see figures \ref{clusteringcosine}, \ref{clusteringeuclidean}, \ref{clustering}).
 
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=\textwidth]{d/cosine.png}
+	\caption{The resulting dendrogram with the cosine definition of distance. The between parenthesis number at the bottom of each line represents the number of samples in that particular cluster. Black dots represent a merge between two clusters. The second cluster from the right is formed by only one digit.}
+	\label{clusteringcosine}
+\end{figure}
 
-\begin{table}[h!]
-	\begin{center}
-		\begin{tabular}{c|c|c|c}
-			Distance & One digit cluster frequency & Two digits clusters & Three digits clusters\\
-			\hline
-			 Hausdorff & 73\% & 22\% &  5\% \\
-			 Euclidean & 54\% & 23\% & 23\% \\
-			 Cosine    & 57\% &  8\% & 17\% \\
-		\end{tabular}
-	\end{center}
-\caption{Relative frequencies of cluster composed by various types of digits. Four or
-	 more digits clusters were never observed.}
-\end{table}
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=\textwidth]{d/euclidean.png}
+	\caption{The resulting dendrogram with the euclidean definition of distance. The between parenthesis number at the bottom of each line represents the number of samples in that particular cluster. Black dots represent a merge between two clusters. The second cluster from the right is formed by only one digit.}
+	\label{clusteringeuclidean}
+\end{figure}
 
-\todo[inline]{rifare con tutti a 18?}
+\begin{figure} [H]
+	\centering
+	\includegraphics [width=\textwidth]{o/clustering.png}
+	\caption{The resulting dendrogram with the Hausdorff definition of distance. The between parenthesis number at the bottom of each line represents the number of samples in that particular cluster. Black dots represent a merge between two clusters. No cluster at the 18-clusters subdivision is formed by only one sample.}
+	\label{clustering}
+\end{figure}
 
 \section{Resulting clusters from 18-clusters agglomerative hierarchical clustering}
 
@@ -1191,12 +1195,6 @@ This definition proved to be the best out of others used, as it permitted to sep
 With this definition, out of 18 clusters, 15 were formed by only one digit, 2 were formed by two digits, and only one was formed of three different digit prototypes.
 All clusters can be visualized in the appendix.
 
-\begin{figure} [H]
-    \centering
-    \includegraphics [width=\textwidth]{o/clustering.png}
-    \caption{The resulting dendrogram. The between parenthesis number at the bottom of each line represents the number of samples in that particular cluster. Black dots represent a merge between two clusters.}
-    \label{clustering}
-\end{figure}
 
 \subsection{Observations on the resulting clusters}
 
@@ -1263,9 +1261,8 @@ This supervised method can be useful for obtaining more interpretable synapse pa
 
 An aspect of the algorithm not explored in this paper, that could be of interest, is its application in a deep neural network. The locality as defined in this paper, i.e. all information for the evolution of a single synapse is derived from the two layers it connects, would be a considerable conceptual change from backpropagation-based algorithms in "deep" (composed by many layers) neural networks.
 
-Aside from the algorithm itself, competition between neurons is a powerful technique that could inspire many algorithm in machine learning. As for biological plausibility, many more aspects of biological neural network are very different from our modeling in artificial neural networks, and could be an inspiration for future research.
- 
-\todo[inline]{mi manca un feeling di ``conclusione'' in questo testo. Che cosa possiamo sintetizzare dai suoi risulati? che prospettive future ci potrebbero essere? che altri esperimenti andrebbero fatti?}
+Aside from the algorithm itself, competition between neurons is a powerful technique that could inspire many algorithm in machine learning.
+As for biological plausibility, many more aspects of biological neural network are very different from our modeling in artificial neural networks (\cite{sporns2007brain}), and could be an inspiration for future research.
 
 \chapter{Acknowledgements}
 This document is the culmination of five years of work.
@@ -1433,6 +1430,8 @@ The definition of cosine distance is
 Where A and B are vectors containing our synapses strenghts.
 
 The linkage method used was to take the average of distances between members of the two clusters.
+
+\todo[inline]{rifare con 18 cluster tutti e due}
 
 \begin{figure} [H]
     \centering
