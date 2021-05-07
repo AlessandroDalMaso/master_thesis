@@ -105,8 +105,6 @@ My re-implementation of the algorithm can be found at:
 
 \tableofcontents
 
-\listoftodos
-
 \chapter{Introduction}
 
 \section{Classification}
@@ -123,7 +121,7 @@ In some cases, no set of classes is given:
 instead the task consist in separating the data among an \textit{a priori} unknown number of classes whose members share similar features.
 Again, applications are widespread:
 from marketing algorithms to medical data, to finance.
-The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to humans \cite{magoulas1999machine}.
+The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to them \cite{magoulas1999machine}.
 
 \section{Machine learning}
 The field of machine learning studies algorithms that improve at a task through learning.
@@ -134,13 +132,12 @@ It is common to distinguish between two kinds of learning:
 supervised and unsupervised.
 A learning algorithm is said to be supervised if it is trained on a labeled data-set, i.e.
 a dataset in which at each sample is associated the desired output from the algorithm, and by confronting the response of the algorithm with the desired output, the parameters of the algorithm are adjusted accordingly.
-Data in which each sample is associated with the corresponding desired output is said to be labeled.
 An example would be an algorithm that reads human handwriting:
 given an input in the form of images of handwritten characters, and the corresponding correct character, to which we can compare the response of the algorithm and adjust the parameters accordingly.
 
-A learning algorithm is said to be unsupervised if no desired output is associated with the input (the data is said to be "unsupervised"), and the parameters are only adjusted based on the comparison between samples.
+A learning algorithm is said to be unsupervised if no desired output is associated with the input (the data is said to be unlabeled), and the parameters are only adjusted based on the comparison between samples \cite{bishop2006pattern}.
 An example would be that of classifying customers from an on-line service based on their shopping habits.
-Without knowing the number of groups in which is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behavior \cite{bishop2006pattern}.
+Without knowing the number of groups in which is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behavior.
 
 \section{Neural Networks}
 One of the most common artificial intelligence algorithm model is the artificial neural network.
@@ -194,7 +191,7 @@ As for the activation functions, one common example is the sigmoid:
 \caption{Equation \ref{sigmoid}.}
 \end{figure}
 Which maps the real number range in the $[0,1]$ range, a property useful in network training to avoid a single neuron value overshadowing all other values.
-Also, having all neurons assume a positive value is commonly a wanted feature of networks, and the same can be said of differentiability of the activation function.
+Also, having all neurons assume a positive value is commonly a wanted feature of networks, together with can be said of differentiability of the activation function.
 Another common function used is the ReLU (rectified linear units):
 
 \begin{equation}
@@ -1442,8 +1439,6 @@ The definition of cosine distance is
 Where A and B are vectors containing our synapses strenghts.
 
 The linkage method used was to take the average of distances between members of the two clusters.
-
-\todo[inline]{rifare con 18 cluster tutti e due}
 
 \begin{figure} [H]
     \centering
