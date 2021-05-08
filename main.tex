@@ -139,7 +139,7 @@ A learning algorithm is said to be unsupervised if no desired output is associat
 An example would be that of classifying customers from an on-line service based on their shopping habits.
 Without knowing the number of groups in which is it optimal to divide customers, nor the nature of these groups, the algorithm must find a suitable set of groups that allows to predict customer behavior.
 
-\section{Neural Networks}
+\section{Neural networks}
 One of the most common artificial intelligence algorithm model is the artificial neural network.
 It consists in a number of ordered sets (called "layers") of mathematical functions (called "neurons").
 In so-called feed-forward neural networks the first layer, or input layer, is composed of input neurons, that assume the value of the input data fed to the network.
@@ -734,7 +734,7 @@ Which is a particular case of a commonly used transformation, the polynomial ker
 
 \section{Accuracy table}
 
-Now that we have explained the three supervised methods (The supervised network is explained in the introduction) used in conjunction with our algorithm we can see the accuracy reached with all three methods, where accuracy is defined as the percentage of correctly classified samples of our 10,000 samples testing database.
+Now that we have explained the three supervised methods (The supervised network is explained in the "Neural networks" section) used in conjunction with our algorithm we can see the accuracy reached with all three methods, where accuracy is defined as the percentage of correctly classified samples of our 10,000 samples testing database.
 
 \begin{table}[h!]
   \begin{center}
@@ -760,6 +760,7 @@ Now that we have explained the three supervised methods (The supervised network 
 
 The literature standards for the accuracy reported in classifying the MNIST database digits are typically higher, around 95\%.
 It is to be noted, however, that while the original paper by Hopfield and Krotov reaches a comparable accuracy, it does so with a number of second-layer neurons and epochs processed one order of magnitude higher than the algorithm discussed in this paper (2.000 neurons vs 100 and 1.000 epochs vs 100).
+
 A point of strength of this model is the interpretability of the synapses:
 we know that out of the one hundred neurons most of them resemble the prototype of a digit (see next section) and can thus act as a binary switch that confirms to the supervised part of the algorithm if the given input does or does not belong to a certain class.
 This would seem to work best when working in conjunction with a random forest since it also works with a system of binary classification.
@@ -772,7 +773,7 @@ These, as well as the numerical results shown in the previous section are the re
 \begin{figure} [H]
     \centering
     \includegraphics [width=12cm ] {h/uu_heatmap.png}
-    \caption{A visual representation of the weight matrix, randomly initialized.There are one hundred hidden neurons, each of which has seven hundred eighty seven synapses, one for each pixel of the input, similarly arranged in a twenty eight by twenty eight matrix.}
+    \caption{A visual representation of the weight matrix, randomly initialized.There are one hundred hidden neurons, each of which has seven hundred eighty seven synapses, one for each pixel of the input, arranged in a twenty eight by twenty eight matrix.}
     \label{heatmap}
 \end{figure}
 
@@ -784,7 +785,7 @@ These, as well as the numerical results shown in the previous section are the re
     \item All ten digits are present. There are other recurring patterns called "chromosome" and "six-pointed". Statistical frequencies are shown in graph \ref{ii_hist}. These recurring patterns were identified by me.
     \item Some patterns did not converge to something recognizable. An example is the synapses in the third row, fifth column of figure \ref{heatmap}.
     \item many zeros appear to be bordered in negative (blue) values. No other negative-encircled digits were observed in three different runs aside from the six in figure \ref{heatmap}, fourth row, fifth column.
-    \item A chi square test was performed, validating the hypothesis of all digits being equally represented with $p  = 0.025$.
+    \item A chi-squared test was performed, validating the hypothesis of all digits being equally represented with $p  = 0.025$.
     \end{itemize}
 
 \begin{figure} [H]
@@ -872,8 +873,6 @@ These figures appear to be consistent, reappearing unchanged at modifications of
 	\label{noh_hist}
 \end{figure}
 
-We can see in figure \ref{noh_hist} that turning off explicit anti-Hebbian learning assures convergence.
-
 \section{Different batch compositions}
 
 Another point of interest in the study of the model proposed was modifying the subdivision in batches of the database.
@@ -951,7 +950,7 @@ In the first, modification, is added the decay term $-\epsilon W_i$ to the main 
     \tau_L \frac{dW_{ij}}{dt} = g(h_i)(R^p v_i - \braket{\textbf{W,v}}_i W_{ij} ) -\epsilon W_{ij}
 \end{equation}
 
-Starting from zero and increasing  $\epsilon$ we observe more and more white sets of neurons in the visual representation of patterns, until about 90\% of patterns appear white at $\epsilon = 0.999$.
+Starting from zero and increasing  $\epsilon$ we observe more and more white sets of synapses strengths in the visual representation of patterns, until about 90\% of patterns appear white at $\epsilon = 0.999$.
 
 The value used for the subsequent acuracy table and visual representation is 0.05.
 
@@ -973,7 +972,6 @@ The value used for the subsequent acuracy table and visual representation is 0.0
 
 The algorithm performed worse with this modification, as we can see in table \ref{decayT}.
 
-This modification follows BCM, the visual cortex theory developed in 1981.
 It seems that in this case the decay brings down most synapses so that they are relatively small compared to the ones that are still visible in the visual representation.
 It is interesting that in this group all digits are represented.
 Furthermore, the synapses are now more similar to prototypes of digits that are surrounded by small, negative synapses values.
@@ -1004,9 +1002,8 @@ Examining the seemingly blank sets of synapses we can see (figure \ref{nearzero}
 
 \section{Multiple neurons reinforced}
 
-In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the (k+1)-th most activated neuron and is null in all other cases. the selected value for $k$ was 4.
-
-
+In the second BCM-inspired modification, more than one neuron undergoes Hebbian learning, so that $g$ is now equal to 1 for the k-th most activated neurons, to $-\Delta$ for the (k+1)-th most activated neuron and is null in all other cases.
+the showcased results use 4 as the value for $k$.
 
 \begin{center}
 	\begin{tabular} {c|c}
@@ -1017,7 +1014,7 @@ In the second BCM-inspired modification, more than one neuron undergoes Hebbian 
 		3 & Hebbian \\
 		4 & Hebbian \\
 		5 & Anti-hebbian \\
-		All other neurons & Null \\
+		All other neurons & No learning \\
 	\end{tabular}
 \end{center}
 
