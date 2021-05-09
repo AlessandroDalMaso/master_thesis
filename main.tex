@@ -85,7 +85,7 @@ The transformed data is meant to be classified with a supervised method.
 The unsupervised training phase utilizes competition between neurons by ranking the response to the given input, strengthening the synapses of the one neuron which responded best to the input through Hebbian learning and weakening the synapses of the ones that gave a weak response through anti-Hebbian learning, thus "pushing them away" from the input pattern.
 As a result, it is possible to recognize patterns among the synapses of each neuron that resemble the original input.
 
-In this thesis I reproduce the model, analysing its behaviour under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes:
+In this thesis I reproduce the model, analyzing its behavior under various variations from the original, quantifying its prediction accuracy working in conjunction with three different supervised algorithms used for classification purposes:
 a random forest, a supervised neural network and a support vector machine.
 The task on which the neural network was used is the classification of digits of the MNIST database.
 An accuracy of about 92\% correct guesses on a test data set was achieved by the network.
@@ -95,7 +95,7 @@ Changing the composition of batches of data;
 Inserting an over time exponential decay (this modification was inspired by the BCM theory of the visual cortex);
 Strengthening and weakening the synapses of multiple neurons per input.
 
-I also observe and classify the emerging patterns among the synapses, analysing them through agglomerative hierarchical clustering with multiple definition of distances, of which the Hausdorff inspired one seems to give the best results.
+I also observe and classify the emerging patterns among the synapses, analyzing them through agglomerative hierarchical clustering with multiple definition of distances, of which the Hausdorff inspired one seems to give the best results.
 
 My re-implementation of the algorithm can be found at:
 
