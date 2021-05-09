@@ -1075,13 +1075,13 @@ For vector samples some common definitions of distance are:
 While some common definition for distance between clusters are (in the following examples, let $X$ and $Y$ be our clusters):
 
 \begin{itemize}
-	\item The minimum possible distance between two samples belonging one to $X$ and one to $Y$;
-	\item The maximum possible distance between two samples belonging one to $X$ and one to $Y$;
+	\item The \textit{minimum} possible distance between two samples belonging one to $X$ and one to $Y$;
+	\item The \textit{maximum} possible distance between two samples belonging one to $X$ and one to $Y$;
 	\item The average of all possible distances be between two samples belonging one to $X$ and one to $Y$;
 	\item Ward's method: the inner variance of the cluster resulting from the merge of $X$ and $Y$, given an euclidean definition of distance between single samples.
 \end{itemize}
 
-\cite{CLUSTER}, \cite{rokach2005clustering}.
+ \cite{rokach2005clustering}.
 
 We then consider each sample as a cluster that contains only one sample, and join together the two closest clusters, repeating this last step until only one cluster remains.
 The results are displayed in a dendrogram, a type of graph that shows how the clusters are being made.
@@ -1103,9 +1103,9 @@ The final dendrogram might look like this:
 
 We can then study the graph to infer emerging information about the continents relative position from one another.
 Usually in this case it is not a good idea to rely on non-human evaluation of features, because it can miss crucial details.
-The most oblivious things we can infer from the graph are that Oceania is an isolated continent, but not so much that its first merge comes after all other continents have merged.
+The most oblivious things we can infer from the graph are that Oceania is an isolated continent, but is still closer to the Afro-Eurasian cluster than the American cluster.
 
-A widespread practice is the possibility of stopping the clustering at some arbitrary point and evaluating the clusters formed at that point.
+A widespread practice (\cite{rokach2005clustering}) is the possibility of stopping the clustering at some arbitrary point and evaluating the clusters formed at that point.
 Again, human evaluation is necessary.
 For example, in figure \ref{conte} stopping before the merging of Oceania with the African-Eurasian cluster gives us three clusters:
 the American cluster, Oceania, and the above mentioned African-Eurasian cluster.
@@ -1124,22 +1124,22 @@ The first two definitions tried simply consider the synapses as a 784-dimensiona
 these are euclidean distance
 
 \begin{equation}
-    d(A,B) = \sum_i (a_i-b_i)^2
+    d(\textbf{a,b}) = \sum_i (a_i-b_i)^2
 \end{equation}
 
-Where $a_i, b_i$ are the single synapses strength of sets A and B.
+Where $a_i, b_i$ are the single synapses strength of sets \textbf{a} and \textbf{b}.
 The resulting clusters (for an empirically determined distance threshold) can be seen in appendix B.
 The second definition tried was cosine distance, i.e.
 \begin{equation}
-    cosine(A,B) = 1 - \frac{A \cdot B}{|A||B|}
+    cosine(\textbf{a,b}) = 1 - \frac{\textbf{a} \cdot \textbf{b}}{\textbf{|a||b|}}
 \end{equation}
 
-Where $|X|$ is the euclidean norm of $X$.
+Where $\textbf{|x|}$ is the euclidean norm of $\textbf{x}$.
 
 The resulting clusters (for an empirically determined distance threshold) can be seen in appendix C.
 
 The final definition used, however, proved to be the best one for creating clusters containing only one digit.
-The definition is taken from a 1998 paper by V. Di Gesù and V. Starovoitov on image distance definition and considers the images not as vectors but as set of points in 3-d space, with the x and y axes as pixels coordinates, and the third axis as weight associated with that synapses.
+The definition is taken from a 1998 paper by V. Di Gesù and V. Starovoitov on image distance definition and considers the images not as vectors but as set of points in 3-D space, with the x and y axes as pixels coordinates, and the third axis as weight associated with that synapses.
 This approach has the advantage that a slight misplacement in space of weights does not cause a big difference in synapse distance.
 
 \begin{figure} [H]
@@ -1166,6 +1166,7 @@ Where $a$ and $b$ are points belonging to set A and B respectively, and $d(a,b)$
 The definition of distance between clusters is the average of all between-clusters element distances.
 
 This definition proved to be the best out of others used, since stopping the agglomerative process at 18 clusters for all three definitions of distance still resulted in at least one cluster composed of only one digit, except for the Hausdorff definition of distance (see figures \ref{clusteringcosine}, \ref{clusteringeuclidean}, \ref{clustering}).
+It is to be noted that the choice of making this evaluation at an 18-cluster division is arbitrarily made on the basis of finding a subdivision that keeps the number of clusters low while assuring that clusters contain the least possible amount of digits. The best-case scenario would be ten clusters all formed by samples representing all the same digit.
 
 \begin{figure} [H]
 	\centering
@@ -1241,8 +1242,8 @@ All clusters can be visualized in the appendix.
 \chapter{Conclusions}
 
 The emerging patterns among synapses strength are of particular interest.
-Unlike in the case of more traditional, backpropagation based networks, they are interpretable by the human eye as similar to prototypes of the input samples, their utility goes beyond that.
-A common occurrence observed (see figure \ref{heatmap}) is a positive digit surrounded by a negative border, a common practice among human designed networks that reduces the possibility of confusion between digits.
+Unlike in the case of more traditional, backpropagation based networks, they are interpretable by the human eye as similar to prototypes of the input samples, and their utility goes beyond that.
+A common occurrence observed (see figure \ref{heatmap}) is a positive digit surrounded by a negative border, a common practice among human-designed networks that reduces the possibility of confusion between digits.
 Another observed behavior is a set of hidden neuron synapses in which it is possible to recognize two numbers:
 one "drawn" in positive synapses strengths, and the other in negative.
 These values might reveal very useful in distinguishing between two classes of digits, as they respond with a positive activation for one digit and a negative one for the other.
@@ -1258,7 +1259,7 @@ Also, varying the hyperparameters of this model did not changed the existing pat
 We did not observe a significant change in accuracy either, however we know from the paper by Hopfield and Krotov that when working with their increased number of epochs and hidden neurons the difference is significant (switching off anti-Hebbian learning lowers the accuracy from 98.54\% to 97.98\%).
 This supervised method can be useful for obtaining more interpretable synapse patterns, that allow us to differentiate between two classes in particular, and study the natural classes that a database is divided into.
 
-An aspect of the algorithm not explored in this paper, that could be of interest, is its application in a deep neural network. The locality as defined in this paper, i.e. all information for the evolution of a single synapse is derived from the two layers it connects, would be a considerable conceptual change from backpropagation-based algorithms in "deep" (composed by many layers) neural networks.
+An aspect of the algorithm not explored in this paper, that could be of interest, is its application in a "deep" (composed by many layers) neural network. The locality as defined in this paper, i.e. all information for the evolution of a single synapse is derived from the two layers it connects, would be a considerable conceptual change from backpropagation-based algorithms in deep neural networks.
 
 Aside from the algorithm itself, competition between neurons is a powerful technique that could inspire many algorithm in machine learning.
 As for biological plausibility, many more aspects of biological neural network are very different from our modeling in artificial neural networks (\cite{sporns2007brain}), and could be an inspiration for future research.
