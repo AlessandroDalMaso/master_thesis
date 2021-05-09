@@ -115,13 +115,15 @@ from allowing computers to recognize handwriting, to the automation of transport
 In general, the last 20 years have seen a growing number of fields in which a large quantity of digital data is available, the so called "big data" field.
 Computational power has also seen a rapid increase in the same time span, creating the possibility of statistical analysis of these large datasets.
 For a long time, human capabilities in this field vastly surpassed those of automated systems;
-In tackling this problem, we open the possibility of many more applications that traditionally were not thought as  tasks for computers \cite{marx2013big}.
+In tackling this problem, we open the possibility of many more applications that traditionally were not thought as  tasks for computers %\cite{marx2013big}
+.
 
 In some cases, no set of classes is given:
 instead the task consist in separating the data among an \textit{a priori} unknown number of classes whose members share similar features.
 Again, applications are widespread:
 from marketing algorithms to medical data, to finance.
-The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to them \cite{magoulas1999machine}.
+The possibility here is not just to delegate to computers a task that would be costly and time consuming to humans, but to investigate new patterns that would be inherently incomprehensible to them \cite{magoulas1999machine}
+.
 
 \section{Machine learning}
 The field of machine learning studies algorithms that improve at a task through learning.
@@ -1244,16 +1246,12 @@ All clusters can be visualized in the appendix.
 The emerging patterns among synapses strength are of particular interest.
 Unlike in the case of more traditional, backpropagation based networks, they are interpretable by the human eye as similar to prototypes of the input samples, and their utility goes beyond that.
 A common occurrence observed (see figure \ref{heatmap}) is a positive digit surrounded by a negative border, a common practice among human-designed networks that reduces the possibility of confusion between digits.
-Another observed behavior is a set of hidden neuron synapses in which it is possible to recognize two numbers:
-one "drawn" in positive synapses strengths, and the other in negative.
-These values might reveal very useful in distinguishing between two classes of digits, as they respond with a positive activation for one digit and a negative one for the other.
 
 The modification that gave us one of the most interesting result is switching off explicit anti-Hebbian learning.
 First off, note that there still is a competition between patterns, as only the most activated one gets reinforced at all, but every neuron is still bound by the fact that every set of synapses must converge to a sphere.
 All the synapses are now positive, as it is to be expected from the positive reinforcement of our model.
 They also resemble only prototypes of the training database.
-We lose the negative border effect and the superimposition of two digits previously discussed.
-However, we can more easily recognize the digits prototypes.
+We lose the negative border effect previously discussed, However we can more easily recognize the digits prototypes.
 A characteristic of these positive patterns is also consistency, as they presented themselves in the two modifications of the model inspired to BCM learning, the one with exponential over-time decay of weights and the one with multiple neurons reinforced.
 Also, varying the hyperparameters of this model did not changed the existing pattern by a significant amount.
 We did not observe a significant change in accuracy either, however we know from the paper by Hopfield and Krotov that when working with their increased number of epochs and hidden neurons the difference is significant (switching off anti-Hebbian learning lowers the accuracy from 98.54\% to 97.98\%).
